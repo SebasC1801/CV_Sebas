@@ -116,14 +116,16 @@ body.tubes-paused .tubes-layer {
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
   transition: border-color 0.25s ease, color 0.25s ease,
-    background 0.25s ease;
+    background 0.25s ease, transform 0.2s ease;
 }
 
 .header-icon:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
 }
 
 html[data-theme="light"] .header-floating {
@@ -139,17 +141,69 @@ html[data-theme="light"] .header-icon {
 }
 
 html[data-theme="light"] .header-icon:hover {
-  border-color: rgba(0, 0, 0, 0.28);
+  border-color: rgba(0, 0, 0, 0.35);
   color: rgba(27, 27, 27, 1);
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.08);
+  transform: scale(1.05);
 }
 
 .menu-floating {
   position: fixed;
-  right: 7vw;
-  top: 140px;
-  z-index: 55;
-  text-align: right;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  max-width: 450px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .menu-floating {
+  background: rgba(17, 17, 17, 0.25);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.menu-close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(27, 27, 27, 0.2);
+  background: rgba(27, 27, 27, 0.05);
+  color: rgba(27, 27, 27, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-close-btn:hover {
+  border-color: rgba(27, 27, 27, 0.3);
+  background: rgba(27, 27, 27, 0.1);
+  color: rgba(27, 27, 27, 1);
+  transform: rotate(90deg);
+}
+
+html[data-theme="dark"] .menu-close-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+html[data-theme="dark"] .menu-close-btn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .menu-list {
@@ -158,6 +212,7 @@ html[data-theme="light"] .header-icon:hover {
   margin: 0;
   padding: 0;
   list-style: none;
+  text-align: right;
 }
 
 .menu-item {
@@ -172,6 +227,10 @@ html[data-theme="light"] .header-icon:hover {
   font-family: var(--font-neuton), "Neuton", var(--font-apple);
   letter-spacing: 0.24em;
   font-size: 0.8rem;
+  color: rgba(27, 27, 27, 0.4);
+}
+
+html[data-theme="dark"] .menu-index {
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -180,14 +239,22 @@ html[data-theme="light"] .header-icon:hover {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: clamp(2.2rem, 6vw, 4rem);
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(27, 27, 27, 0.85);
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
+html[data-theme="dark"] .menu-link {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 .menu-link:hover {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(27, 27, 27, 1);
   transform: translateX(-4px);
+}
+
+html[data-theme="dark"] .menu-link:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 html[data-theme="light"] .menu-index {

@@ -75,6 +75,13 @@ export default function HeaderMenu() {
             exit={{ opacity: 0, x: 24 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
+            <button
+              className="menu-close-btn"
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={20} />
+            </button>
             <ul className="menu-list">
               {menuItems.map((item) => (
                 <motion.li
@@ -85,7 +92,11 @@ export default function HeaderMenu() {
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="menu-index">{item.index}</span>
-                  <a className="menu-link" href={item.href}>
+                  <a 
+                    className="menu-link" 
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                  >
                     {item.label}
                   </a>
                 </motion.li>

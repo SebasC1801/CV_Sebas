@@ -44,15 +44,26 @@ export default function GlowingCard() {
           overflow: visible;
           width: 280px;
           height: 373px;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+          transform: translateY(-8px);
         }
 
         .content {
           width: 100%;
           height: 100%;
           transform-style: preserve-3d;
-          transition: transform 300ms;
+          transition: transform 500ms ease;
           box-shadow: 0px 0px 10px 1px #000000ee;
           border-radius: 5px;
+        }
+
+        .card:hover .content {
+          transform: rotateY(180deg);
+          box-shadow: 0px 10px 30px 5px #000000dd;
         }
 
         .front,
@@ -112,10 +123,11 @@ export default function GlowingCard() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 0.3s ease;
         }
 
-        .card:hover .content {
-          transform: rotateY(180deg);
+        .card:hover .profile-image {
+          transform: scale(1.05);
         }
 
         @keyframes rotation_481 {

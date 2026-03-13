@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { useMemo, useRef } from "react";
 import SkillsCarousel from "./SkillsCarousel";
 import GlowingCard from "./GlowingCard";
+import BookFlip from "./BookFlip";
 
 type ScrollSection = {
   focus: string;
@@ -31,9 +32,9 @@ const sections: ScrollSection[] = [
     visual: "outline-circle",
   },
   {
-    focus: "La experiencia de usuario es lo primero.",
+    focus: "Proyectos",
     description:
-      "No se trata solo de cómo se ve, sino de cómo se siente. Diseño interfaces intuitivas que guían al usuario sin esfuerzo.",
+      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación.",
     visual: "minimal-grid",
   },
   {
@@ -48,9 +49,9 @@ function ScrollTextBlock({ item }: { item: ScrollSection }) {
   const blockRef = useRef<HTMLElement | null>(null);
   
   return (
-    <section ref={blockRef} className="min-h-screen w-full flex flex-col justify-center items-center py-16 px-8 text-center">
+    <section ref={blockRef} className="min-h-screen w-full flex flex-col justify-center items-start py-16 px-8 md:px-16 lg:px-24">
       <motion.p 
-        className="relative z-10 font-[family-name:var(--font-oswald)] text-[clamp(2.5rem,4vw,4.5rem)] font-medium leading-[1.1] text-[var(--foreground)] mx-auto mb-8 max-w-[800px] tracking-[0.02em] uppercase text-center w-full"
+        className="relative z-10 font-[family-name:var(--font-oswald)] text-[clamp(2.5rem,4vw,4.5rem)] font-medium leading-[1.1] text-[var(--foreground)] mb-8 max-w-[800px] tracking-[0.02em] uppercase"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -59,7 +60,7 @@ function ScrollTextBlock({ item }: { item: ScrollSection }) {
         {item.focus}
       </motion.p>
       <motion.p 
-        className="relative z-10 font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 mx-auto max-w-[600px] leading-[1.6] font-normal text-center w-full before:content-[''] before:block before:w-[40px] before:h-[1px] before:bg-[var(--accent,#fff)] before:mx-auto before:mb-6 before:opacity-50"
+        className="relative z-10 font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 max-w-[600px] leading-[1.6] font-normal before:content-[''] before:block before:w-[40px] before:h-[1px] before:bg-[var(--accent,#fff)] before:mb-6 before:opacity-50"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 0.85, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -82,6 +83,15 @@ function VisualLayer({
   progress: MotionValue<number>;
   className: string;
 }) {
+  // Para el libro (minimal-grid), no aplicamos animaciones de opacidad
+  if (visual === "minimal-grid") {
+    return (
+      <div className={className} style={{ opacity: 1, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <BookFlip />
+      </div>
+    );
+  }
+
   const opacity = useTransform(
     progress,
     [range.start, range.mid, range.end],
@@ -102,14 +112,6 @@ function VisualLayer({
     <motion.div className={className} style={{ opacity, scale, y }}>
       {visual === "outline-circle" && <div className="circle-outline" />}
       {visual === "stone-block" && <div className="stone-block" />}
-      {visual === "minimal-grid" && (
-        <div className="grid-lines">
-          <div className="grid-box" />
-          <div className="grid-box" />
-          <div className="grid-box" />
-          <div className="grid-box" />
-        </div>
-      )}
       {visual === "balance-circles" && (
         <div className="balance">
           <div className="b-circle b-1" />

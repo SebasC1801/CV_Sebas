@@ -273,8 +273,8 @@ export default function BookFlip() {
       <div
         id="book"
         style={{
-          width: "min(550px, 85%)",
-          height: "380px",
+          width: "min(600px, 88%)",
+          height: "420px",
           position: "relative",
           background: "#f0f0f0",
           boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
@@ -393,18 +393,42 @@ export default function BookFlip() {
         </div>
       </div>
       <style jsx global>{`
+        .page {
+          background-color: #fff !important;
+        }
+        html[data-theme="dark"] .page {
+          background-color: #2a2a2a !important;
+        }
+        .flap-content {
+          background-color: #fdfdfd !important;
+        }
+        html[data-theme="dark"] .flap-content {
+          background-color: #2a2a2a !important;
+        }
         h2 {
           margin-top: 0;
-          color: #333;
+          color: #1a1a1a;
+          font-weight: 700;
+        }
+        html[data-theme="dark"] h2 {
+          color: #fff;
         }
         p {
-          color: #666;
+          color: #333;
+          font-weight: 500;
+        }
+        html[data-theme="dark"] p {
+          color: #e0e0e0;
         }
         .page-number {
           position: absolute;
           bottom: 20px;
-          color: #aaa;
+          color: #888;
           font-size: 14px;
+          font-weight: 500;
+        }
+        html[data-theme="dark"] .page-number {
+          color: #ccc;
         }
         #left-front .page-number,
         #left-under .page-number {

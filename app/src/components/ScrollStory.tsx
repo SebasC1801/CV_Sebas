@@ -34,7 +34,7 @@ const sections: ScrollSection[] = [
   {
     focus: "Proyectos",
     description:
-      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación.",
+      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación. Cada uno me ha permitido poner en práctica mis conocimientos, explorar nuevas tecnologías y mejorar mis habilidades como desarrollador. Me enfoco en crear soluciones funcionales, con código organizado y una buena experiencia de usuario, buscando siempre seguir aprendiendo y creciendo en cada proyecto.",
     visual: "minimal-grid",
   },
   {
@@ -60,7 +60,7 @@ function ScrollTextBlock({ item }: { item: ScrollSection }) {
         {item.focus}
       </motion.p>
       <motion.p 
-        className="relative z-10 font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 max-w-[600px] leading-[1.6] font-normal before:content-[''] before:block before:w-[40px] before:h-[1px] before:bg-[var(--accent,#fff)] before:mb-6 before:opacity-50"
+        className="relative z-10 font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 max-w-[600px] leading-[1.6] font-normal text-justify before:content-[''] before:block before:w-[40px] before:h-[1px] before:bg-[var(--accent,#fff)] before:mb-6 before:opacity-50"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 0.85, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -179,10 +179,10 @@ export default function ScrollStory() {
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <p className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal">
+                <p className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify">
                   Soy estudiante universitario con interés en el desarrollo web, especialmente en el frontend. Me gusta aprender a crear interfaces modernas, intuitivas y visualmente atractivas que mejoren la experiencia de los usuarios. Actualmente me encuentro en proceso de aprendizaje, fortaleciendo mis bases en desarrollo web y explorando nuevas tecnologías.
                 </p>
-                <p className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal">
+                <p className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify">
                   Disfruto resolver problemas, practicar y desarrollar pequeños proyectos que me ayuden a seguir creciendo y mejorando mis habilidades como programador.
                 </p>
               </motion.div>
@@ -242,7 +242,7 @@ export default function ScrollStory() {
               {sections[0].focus}
             </motion.p>
             <motion.p 
-              className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal"
+              className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 0.85, y: 0 }}
               viewport={{ once: false, margin: "-100px" }}

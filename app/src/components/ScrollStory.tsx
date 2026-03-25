@@ -228,7 +228,7 @@ export default function ScrollStory() {
       </div>
 
       {/* Sección con carrusel - Diseño que cuenta historias */}
-      <div className="min-h-screen w-full flex items-center py-16">
+      <div id="skills" className="min-h-screen w-full flex items-center py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-16 max-w-[1400px] mx-auto">
           {/* Texto izquierdo - mitad izquierda */}
           <div className="flex flex-col justify-center px-8 lg:px-16 space-y-6">

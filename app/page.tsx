@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HeaderMenu from "./src/components/HeaderMenu";
-// import Intro from "./src/components/Intro";
+import LoadingScreen from "./src/components/LoadingScreen";
 import ScrollStory from "./src/components/ScrollStory";
 import TubesBackground from "./src/components/TubesBackground";
-import LogoFlipTransition from "./src/components/LogoFlipTransition";
 import KnowledgeSection from "./src/components/KnowledgeSection";
 import ContactSection from "./src/components/ContactSection";
 import Footer from "./src/components/Footer";
@@ -13,6 +12,8 @@ import HeroSection from "./src/components/HeroSection";
 import WhatsAppButton from "./src/components/WhatsAppButton";
 
 export default function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     // Desactivar restauración automática del scroll
     if ('scrollRestoration' in window.history) {
@@ -24,38 +25,48 @@ export default function Home() {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     
-    // También forzar después de que todo se renderice
-    const timer = setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 100);
-    
-    return () => clearTimeout(timer);
+    // Esperar a que la página esté completamente cargada
+    const handleLoad = () => {
+      setTimeout(() => {
+        setIsLoaded(true);
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 600);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <TubesBackground />
-      <div className="intro-tubes-bg">
-        <TubesBackground disableClick />
+    <>
+      <LoadingScreen />
+      <div className={`relative min-h-screen bg-[var(--background)] text-[var(--foreground)] ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+        <TubesBackground />
+        <div className="intro-tubes-bg">
+          <TubesBackground disableClick />
+        </div>
+        <HeaderMenu />
+        <div id="home">
+          <HeroSection />
+        </div>
+        <div id="about">
+          <ScrollStory />
+        </div>
+        <div id="knowledge">
+          <KnowledgeSection />
+        </div>
+        <div id="contact">
+          <ContactSection />
+        </div>
+        <Footer />
+        <WhatsAppButton />
       </div>
-      <HeaderMenu />
-      {/* <Intro /> */}
-      <div id="home">
-        <HeroSection />
-      </div>
-      <div id="about">
-        <ScrollStory />
-      </div>
-      <div id="knowledge">
-        <KnowledgeSection />
-      </div>
-      <div id="contact">
-        <ContactSection />
-      </div>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    </>
   );
 }

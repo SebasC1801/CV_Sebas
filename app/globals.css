@@ -99,11 +99,32 @@ body.tubes-paused .tubes-layer {
   backdrop-filter: blur(10px);
 }
 
-.header-lang {
-  font-family: var(--font-neuton), "Neuton", var(--font-apple);
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 0.85rem;
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.header-avatar:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+html[data-theme="light"] .header-avatar {
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="light"] .header-avatar:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.header-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .header-icon {

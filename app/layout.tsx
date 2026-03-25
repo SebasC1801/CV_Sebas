@@ -23,8 +23,11 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "Portafolio",
+  title: "CV-Sebastian",
   description: "Portafolio personal",
+  icons: {
+    icon: '/avatar_sebas.jpeg',
+  },
 };
 
 export default function RootLayout({

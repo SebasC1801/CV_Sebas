@@ -2,15 +2,139 @@
 
 import { useEffect, useRef } from "react";
 
-const pages = Array.from(
-  { length: 10 },
-  (_, i) => `
-    <h2>Page ${i}</h2>
-    <p>A classic page turn effect using JS/CSS. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <p>Click and drag a corner.</p>
-    <div class="page-number">${i}</div>
+const pages = [
+  // Proyecto 1: Sonovibe - Página izquierda (introducción)
   `
-);
+    <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">Sonovibe</h2>
+      <p style="text-align: justify; line-height: 1.6; margin-bottom: 1.5rem;">
+        Aplicación web de reproducción de música desarrollada con TypeScript, CSS y JavaScript. 
+        Diseñada con una interfaz fluida y atractiva, priorizando la experiencia del usuario.
+      </p>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto;">
+        <span style="background: #e8f4f8; color: #2c5f7a; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #d0e7f0;">TypeScript</span>
+        <span style="background: #fff9e6; color: #8b7500; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #f7e89d;">JavaScript</span>
+        <span style="background: #e6f0ff; color: #1a4d8f; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #b3d4ff;">CSS</span>
+      </div>
+    </div>
+  `,
+  // Proyecto 1: Sonovibe - Página derecha (tarjeta interactiva)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; position: relative; padding: 0 !important;">
+      <div style="position: relative; flex: 1; overflow: hidden; border-radius: 8px; margin: 20px;">
+        <img src="/Sonovibe.png" alt="Sonovibe" style="width: 100%; height: 100%; object-fit: cover;" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.5rem;">
+          <a href="https://reproductor-de-musica-six.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link"
+             style="background: white; color: #1a1a1a; padding: 0.7rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer;">
+            Ver Proyecto
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  `,
+  // Proyecto 2: Animal Care - Página izquierda (introducción)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">Animal Care</h2>
+      <p style="text-align: justify; line-height: 1.6; margin-bottom: 1.5rem;">
+        Aplicación fullstack para clínicas veterinarias construida con Java (backend) y JavaScript/HTML/CSS (frontend). 
+        Gestiona módulos de pacientes animales, doctores, citas médicas, prioridades y categorías, con despliegue en Render.
+      </p>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto;">
+        <span style="background: #fff3e6; color: #b35900; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #ffd9a3;">Java</span>
+        <span style="background: #fff9e6; color: #8b7500; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #f7e89d;">JavaScript</span>
+        <span style="background: #ffe6e6; color: #cc0000; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #ffb3b3;">HTML</span>
+        <span style="background: #e6f0ff; color: #1a4d8f; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #b3d4ff;">CSS</span>
+      </div>
+    </div>
+  `,
+  // Proyecto 2: Animal Care - Página derecha (tarjeta interactiva)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; position: relative; padding: 0 !important;">
+      <div style="position: relative; flex: 1; overflow: hidden; border-radius: 8px; margin: 20px;">
+        <img src="/AnimalCare.png" alt="Animal Care" style="width: 100%; height: 100%; object-fit: cover;" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.5rem;">
+          <a href="https://veterinaria-animal-care.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link"
+             style="background: white; color: #1a1a1a; padding: 0.7rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer;">
+            Ver Proyecto
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  `,
+  // Proyecto 3: Multivar 3D - Página izquierda (introducción)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">Multivar 3D</h2>
+      <p style="text-align: justify; line-height: 1.6; margin-bottom: 1.5rem;">
+        Calculadora graficadora multivariable fullstack construida en Python/Django (backend) y Three.js (frontend), 
+        con procesamiento simbólico vía WolframAlpha. Permite visualización 3D interactiva de superficies y operaciones 
+        como gradientes, integrales dobles y multiplicadores de Lagrange.
+      </p>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto;">
+        <span style="background: #e6f7ff; color: #0066cc; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #99d6ff;">Python</span>
+        <span style="background: #e8f5e9; color: #2e7d32; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #a5d6a7;">Django</span>
+        <span style="background: #fff3e0; color: #e65100; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #ffcc80;">Three.js</span>
+      </div>
+    </div>
+  `,
+  // Proyecto 3: Multivar 3D - Página derecha (tarjeta interactiva)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; position: relative; padding: 0 !important;">
+      <div style="position: relative; flex: 1; overflow: hidden; border-radius: 8px; margin: 20px;">
+        <img src="/Multivar3d.png" alt="Multivar 3D" style="width: 100%; height: 100%; object-fit: cover;" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.5rem;">
+          <a href="https://multivar-3d.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link"
+             style="background: white; color: #1a1a1a; padding: 0.7rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer;">
+            Ver Proyecto
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  `,
+  // Proyecto 4: Mentes Creativas - Página izquierda (introducción)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">Mentes Creativas</h2>
+      <p style="text-align: justify; line-height: 1.6; margin-bottom: 1.5rem;">
+        Proyecto grupal construido en React + Vite (JavaScript/TypeScript) con componentes 3D usando Three.js y React Three Fiber. 
+        Implementa pruebas unitarias con Jest y React Testing Library, pipeline CI/CD con GitHub Actions y despliegue en Vercel.
+      </p>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto;">
+        <span style="background: #e1f5fe; color: #01579b; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #81d4fa;">React</span>
+        <span style="background: #e8f4f8; color: #2c5f7a; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #d0e7f0;">TypeScript</span>
+        <span style="background: #fff3e0; color: #e65100; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #ffcc80;">Three.js</span>
+        <span style="background: #f3e5f5; color: #6a1b9a; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #ce93d8;">Vite</span>
+      </div>
+    </div>
+  `,
+  // Proyecto 4: Mentes Creativas - Página derecha (tarjeta interactiva)
+  `
+    <div style="height: 100%; display: flex; flex-direction: column; position: relative; padding: 0 !important;">
+      <div style="position: relative; flex: 1; overflow: hidden; border-radius: 8px; margin: 20px;">
+        <img src="/MentesCreativas.png" alt="Mentes Creativas" style="width: 100%; height: 100%; object-fit: cover;" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.5rem;">
+          <a href="https://fpc-ten.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link"
+             style="background: white; color: #1a1a1a; padding: 0.7rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer;">
+            Ver Proyecto
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  `,
+];
 
 export default function BookFlip() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -206,6 +330,12 @@ export default function BookFlip() {
     }
 
     book.addEventListener("pointerdown", (e: PointerEvent) => {
+      // Si el click es en un enlace, no hacer nada
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' || target.closest('a')) {
+        return;
+      }
+
       let rect = book.getBoundingClientRect();
       let x = e.clientX - rect.left;
       let y = e.clientY - rect.top;
@@ -396,29 +526,27 @@ export default function BookFlip() {
         .page {
           background-color: #fff !important;
         }
-        html[data-theme="dark"] .page {
-          background-color: #2a2a2a !important;
-        }
         .flap-content {
           background-color: #fdfdfd !important;
         }
-        html[data-theme="dark"] .flap-content {
-          background-color: #2a2a2a !important;
-        }
-        h2 {
+        .page h2,
+        .flap-content h2 {
           margin-top: 0;
           color: #1a1a1a;
           font-weight: 700;
         }
-        html[data-theme="dark"] h2 {
-          color: #fff;
-        }
-        p {
+        .page p,
+        .flap-content p {
           color: #333;
           font-weight: 500;
         }
-        html[data-theme="dark"] p {
-          color: #e0e0e0;
+        .page a,
+        .flap-content a {
+          pointer-events: auto !important;
+        }
+        .project-link:hover {
+          transform: scale(1.05) !important;
+          box-shadow: 0 6px 30px rgba(0,0,0,0.4) !important;
         }
         .page-number {
           position: absolute;
@@ -426,9 +554,6 @@ export default function BookFlip() {
           color: #888;
           font-size: 14px;
           font-weight: 500;
-        }
-        html[data-theme="dark"] .page-number {
-          color: #ccc;
         }
         #left-front .page-number,
         #left-under .page-number {

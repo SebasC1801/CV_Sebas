@@ -18,11 +18,19 @@ export default function Home() {
       </div>
       <HeaderMenu />
       {/* <Intro /> */}
-      <HeroSection />
-      <ScrollStory />
+      <div id="home">
+        <HeroSection />
+      </div>
+      <div id="about">
+        <ScrollStory />
+      </div>
       <LogoFlipTransition />
-      <KnowledgeSection />
-      <ContactSection />
+      <div id="skills">
+        <KnowledgeSection />
+      </div>
+      <div id="contact">
+        <ContactSection />
+      </div>
       <Footer />
       <WhatsAppButton />
     </div>

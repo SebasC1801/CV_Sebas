@@ -199,7 +199,7 @@ export default function ScrollStory() {
       </div>
 
       {/* Contenedor de dos columnas para el resto */}
-      <div className="grid md:flex md:flex-row">
+      <div className="grid md:flex md:flex-row" id="projects">
         {/* Left Column: Scroll Content */}
         <div className="w-full md:w-1/2 relative z-[5] md:z-2">
           <ScrollTextBlock item={sections[1]} />

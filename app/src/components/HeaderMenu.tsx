@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeController";
 
 const menuItems = [
-  { index: "01", label: "Home", href: "#home" },
-  { index: "02", label: "Work", href: "#work" },
-  { index: "03", label: "About", href: "#about" },
-  { index: "04", label: "Contact", href: "#contact" },
+  { index: "01", label: "Inicio", href: "#home" },
+  { index: "02", label: "Acerca de mí", href: "#about" },
+  { index: "03", label: "Skills", href: "#skills" },
+  { index: "04", label: "Proyectos", href: "#projects" },
+  { index: "05", label: "Contacto", href: "#contact" },
 ];
 
 export default function HeaderMenu() {

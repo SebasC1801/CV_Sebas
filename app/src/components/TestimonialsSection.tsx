@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useTheme } from "./ThemeController";
 
 const testimonials = [
   {
@@ -26,6 +27,11 @@ const testimonials = [
 export default function TestimonialsSection() {
   const [currentStep, setCurrentStep] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
+  const { theme } = useTheme();
+
+  console.log('Theme:', theme);
+
+  const textColor = theme === 'dark' ? '#ffffff' : '#1b1b1b';
 
   const nextCard = () => {
     if (currentStep < testimonials.length - 1) {
@@ -65,10 +71,39 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="testimonials-section">
-      <div className="testimonials-header">
-        <h2 className="testimonials-title">Testimonios</h2>
-        <p className="testimonials-description">
+    <section style={{ 
+      position: 'relative',
+      width: '100%',
+      minHeight: '100vh',
+      padding: '4rem 2rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '3rem',
+      zIndex: 10
+    }}>
+      <div style={{ 
+        maxWidth: '800px', 
+        textAlign: 'center'
+      }}>
+        <h2 style={{ 
+          fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+          fontSize: 'clamp(2.5rem, 4vw, 4.5rem)',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
+          marginBottom: '1.5rem'
+        }}>
+          Testimonios
+        </h2>
+        <p style={{
+          fontFamily: 'var(--font-neuton), Neuton, sans-serif',
+          fontSize: '1.35rem',
+          lineHeight: 1.6,
+          color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
+          opacity: 0.85,
+          textAlign: 'justify'
+        }}>
           A lo largo de mi formación he tenido la oportunidad de colaborar con distintas personas en proyectos académicos y personales. A continuación, algunas de sus opiniones sobre nuestra experiencia trabajando juntos.
         </p>
       </div>

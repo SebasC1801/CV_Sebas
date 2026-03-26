@@ -264,15 +264,6 @@ export default function ScrollStory() {
         {/* Left Column: Scroll Content */}
         <div className="w-full md:w-1/2 relative z-[5] md:z-2">
           <ScrollTextBlock item={sections[2]} />
-
-          <div className="h-[60vh] flex items-center justify-center text-center px-8 border-t border-white/10 mt-[10vh] w-full">
-            <div className="text-[1.2rem] font-light text-[var(--muted,#888)]">
-              <strong className="block text-[2rem] text-[var(--foreground)] mb-4">Creemos algo único.</strong>
-              hola@sebas.design
-              <br />
-              Disponible para freelance
-            </div>
-          </div>
         </div>
 
         {/* Right Column: Sticky Visuals */}

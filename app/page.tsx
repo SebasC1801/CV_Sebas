@@ -5,7 +5,7 @@ import HeaderMenu from "./src/components/HeaderMenu";
 import LoadingScreen from "./src/components/LoadingScreen";
 import ScrollStory from "./src/components/ScrollStory";
 import TubesBackground from "./src/components/TubesBackground";
-import KnowledgeSection from "./src/components/KnowledgeSection";
+import TestimonialsSection from "./src/components/TestimonialsSection";
 import ContactSection from "./src/components/ContactSection";
 import Footer from "./src/components/Footer";
 import HeroSection from "./src/components/HeroSection";
@@ -58,8 +58,8 @@ export default function Home() {
         <div id="about">
           <ScrollStory />
         </div>
-        <div id="knowledge">
-          <KnowledgeSection />
+        <div id="testimonials">
+          <TestimonialsSection />
         </div>
         <div id="contact">
           <ContactSection />

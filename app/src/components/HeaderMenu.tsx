@@ -8,9 +8,10 @@ import { useTheme } from "./ThemeController";
 const menuItems = [
   { index: "01", label: "Inicio", href: "#home" },
   { index: "02", label: "Acerca de mí", href: "#about" },
-  { index: "03", label: "Skills", href: "#skills" },
-  { index: "04", label: "Proyectos", href: "#projects" },
-  { index: "05", label: "Contacto", href: "#contact" },
+  { index: "03", label: "Proyectos", href: "#projects" },
+  { index: "04", label: "Skills", href: "#skills" },
+  { index: "05", label: "Testimonios", href: "#testimonials" },
+  { index: "06", label: "Contacto", href: "#contact" },
 ];
 
 export default function HeaderMenu() {

@@ -5,6 +5,7 @@ import { useMemo, useRef } from "react";
 import SkillsCarousel from "./SkillsCarousel";
 import GlowingCard from "./GlowingCard";
 import BookFlip from "./BookFlip";
+import ExperienceSection from "./ExperienceSection";
 
 type ScrollSection = {
   focus: string;
@@ -36,12 +37,6 @@ const sections: ScrollSection[] = [
     description:
       "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación. Cada uno me ha permitido poner en práctica mis conocimientos, explorar nuevas tecnologías y mejorar mis habilidades como desarrollador. Me enfoco en crear soluciones funcionales, con código organizado y una buena experiencia de usuario, buscando siempre seguir aprendiendo y creciendo en cada proyecto.",
     visual: "minimal-grid",
-  },
-  {
-    focus: "Detalles que marcan la diferencia.",
-    description:
-      "Desde micro-interacciones hasta la tipografía perfecta. Son los pequeños detalles los que transforman un buen proyecto en uno excepcional.",
-    visual: "balance-circles",
   },
 ];
 
@@ -259,28 +254,8 @@ export default function ScrollStory() {
         </div>
       </div>
 
-      {/* Contenedor de dos columnas para última sección */}
-      <div className="grid md:flex md:flex-row">
-        {/* Left Column: Scroll Content */}
-        <div className="w-full md:w-1/2 relative z-[5] md:z-2">
-          <ScrollTextBlock item={sections[2]} />
-        </div>
-
-        {/* Right Column: Sticky Visuals */}
-        <div className="w-full md:w-1/2 fixed md:relative inset-0 h-full md:h-auto pointer-events-none md:pointer-events-auto z-1 opacity-15 md:opacity-100 mix-blend-overlay md:mix-blend-normal">
-          <div className="sticky top-0 h-screen w-full grid place-items-center border-l-0 md:border-l border-[var(--border)] overflow-hidden">
-            {[sections[2]].map((item, index) => (
-              <VisualLayer
-                key={item.visual}
-                className="shape-container"
-                visual={item.visual}
-                range={ranges[2]}
-                progress={scrollYProgress}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Sección de Experiencia Académica y Laboral */}
+      <ExperienceSection />
 
       <style jsx>{`
         /* --- Progress Indicators --- */

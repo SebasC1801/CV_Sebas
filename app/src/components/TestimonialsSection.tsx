@@ -6,27 +6,35 @@ import { useTheme } from "./ThemeController";
 const testimonials = [
   {
     id: 1,
-    name: "Andrés Mejía",
-    role: "Compañero de equipo",
-    text: "Trabajar con Sebastián en el proyecto fue muy buena experiencia. Se nota que le apasiona el frontend, siempre estaba pendiente de que la interfaz quedara bien hecha y era receptivo cuando había que hacer ajustes. Cumplió con su parte sin necesidad de estar encima de él.",
-    image: "/senior1.jpg",
-    color: "rgb(71, 166, 185)",
+    name: "Marian Burgos",
+    role: "Contadora",
+    text: "Sebas me apoyó con el desarrollo de una página sencilla para mi trabajo independiente. Fue muy puntual, se comunicó bien durante todo el proceso y el resultado fue justo lo que tenía en mente. Lo recomendaría sin pensarlo.",
+    image: "/mariancita.jpeg",
+    color: "linear-gradient(135deg, #7eb8c9, #a8d8e8, #5a9aad)",
   },
   {
     id: 2,
-    name: "Carolina Ruiz",
-    role: "Docente de Desarrollo Web",
-    text: "Sebastián es un estudiante comprometido con lo que hace. En los proyectos del curso se destacó por la calidad visual y funcional de sus entregas, y por buscar siempre ir un poco más allá de los requisitos mínimos. Tiene buenas bases y una actitud que lo va a llevar lejos.",
-    image: "/seniora3.jpg",
-    color: "rgb(211, 212, 217)",
+    name: "John Ceballos",
+    role: "Tecnólogo en Ventas",
+    text: "Le pedí a Sebas que me ayudara con una página para promocionar mis servicios y quedé muy contento con el resultado. Se tomó el tiempo de entender lo que necesitaba y entregó algo que se veía profesional. Para ser estudiante, la verdad superó mis expectativas.",
+    image: "/johnsin.jpeg",
+    color: "linear-gradient(135deg, #c9a87e, #e8d0a8, #ad8a5a)",
   },
   {
     id: 3,
-    name: "Jorge Patiño",
-    role: "Cliente",
-    text: "Le pedí a Sebastián que me ayudara con una página sencilla para mi negocio y quedé satisfecho con el resultado. Se comunicó bien durante el proceso, preguntó lo que necesitaba saber y entregó algo que realmente se veía profesional. Lo recomendaría.",
-    image: "/senior2.jpg",
-    color: "rgb(255, 209, 103)",
+    name: "Manuela",
+    role: "Estudiante de Diseño Gráfico",
+    text: "Trabajamos juntos en un proyecto y fue muy buena experiencia. Sebas tiene buen ojo para los detalles visuales, algo que no es tan común en alguien de software. Siempre estuvo abierto a ajustes y el resultado final quedó muy bien.",
+    image: "/manuelita.jpeg",
+    color: "linear-gradient(135deg, #b07ec9, #d0a8e8, #8a5aad)",
+  },
+  {
+    id: 4,
+    name: "Alejandra",
+    role: "Administradora de Ventas",
+    text: "Le encargué el desarrollo de una página para un emprendimiento y cumplió muy bien. Explicó cada paso con claridad, fue responsable con los tiempos y se notó el compromiso con el trabajo. Definitivamente lo volvería a contratar.",
+    image: "/alejita.jpeg",
+    color: "linear-gradient(135deg, #7ec98a, #a8e8b4, #5aad66)",
   },
 ];
 
@@ -124,7 +132,7 @@ export default function TestimonialsSection() {
           >
             <div
               className="card-image"
-              style={{ backgroundColor: testimonial.color }}
+              style={{ background: testimonial.color }}
             >
               <div className="testimonial-avatar">
                 <img 

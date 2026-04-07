@@ -34,7 +34,7 @@ const sections: ScrollSection[] = [
   {
     focus: "Proyectos",
     description:
-      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación. Cada uno me ha permitido poner en práctica mis conocimientos, explorar nuevas tecnologías y mejorar mis habilidades como desarrollador. Me enfoco en crear soluciones funcionales, con código organizado y una buena experiencia de usuario, buscando siempre seguir aprendiendo y creciendo en cada proyecto.",
+      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación. Arrastra las páginas del libro para explorar cada proyecto. Cada uno me ha permitido poner en práctica mis conocimientos, explorar nuevas tecnologías y mejorar mis habilidades como desarrollador.",
     visual: "minimal-grid",
   },
 ];
@@ -192,32 +192,45 @@ export default function ScrollStory() {
         </div>
       </div>
 
-      {/* Contenedor de dos columnas para el resto */}
-      <div className="grid md:flex md:flex-row" id="projects">
-        {/* Left Column: Scroll Content */}
-        <div className="w-full md:w-1/2 relative z-[5] md:z-2">
-          <ScrollTextBlock item={sections[1]} />
+      {/* Sección de Proyectos centrada */}
+      <div className="min-h-screen w-full flex flex-col items-center justify-center py-16 px-8" id="projects">
+        <div style={{ maxWidth: "800px", textAlign: "center", marginBottom: "3rem" }}>
+          <motion.h2
+            style={{
+              fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+              fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              color: "var(--foreground)",
+              marginBottom: "1.5rem",
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {sections[1].focus}
+          </motion.h2>
+          <motion.p
+            style={{
+              fontFamily: 'var(--font-neuton), Neuton, sans-serif',
+              fontSize: "1.35rem",
+              lineHeight: 1.6,
+              color: "var(--foreground)",
+              opacity: 0.85,
+              textAlign: "justify",
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 0.85, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {sections[1].description}
+          </motion.p>
         </div>
-
-        {/* Right Column: Sticky Visuals */}
-        <div className="w-full md:w-1/2 fixed md:relative inset-0 h-full md:h-auto pointer-events-none md:pointer-events-auto z-1 opacity-15 md:opacity-100 mix-blend-overlay md:mix-blend-normal">
-          <div className="sticky top-0 h-screen w-full grid place-items-center border-l-0 md:border-l border-[var(--border)] overflow-hidden">
-            {/* Desktop Progress Line - attached to the left edge of the visual panel (section edge relative to split) */}
-            <motion.div
-              className="desktop-progress"
-              style={{ scaleY: scrollYProgress }}
-            />
-            
-            {[sections[1]].map((item, index) => (
-              <VisualLayer
-                key={item.visual}
-                className="shape-container"
-                visual={item.visual}
-                range={ranges[1]}
-                progress={scrollYProgress}
-              />
-            ))}
-          </div>
+        
+        <div className="flex items-center justify-center" style={{ width: "100%", minHeight: "500px" }}>
+          <BookFlip />
         </div>
       </div>
 

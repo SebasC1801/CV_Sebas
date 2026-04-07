@@ -875,6 +875,7 @@ html[data-theme="light"] .contact-github-icon {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .item-bg {
@@ -901,14 +902,21 @@ html[data-theme="light"] .contact-github-icon {
   z-index: 2;
   max-width: 1300px;
   margin: 60px auto;
+  overflow: hidden;
 }
 
 .news-slider__item {
-  width: 400px !important;
+  width: calc((100% - 40px) / 3) !important;
   flex-shrink: 0;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
   transition: all 0.3s;
+}
+
+@media screen and (min-width: 1024px) {
+  .news-slider__item {
+    width: calc((100% - 40px) / 3) !important;
+  }
 }
 
 .news-slider__item.swiper-slide-active,
@@ -1091,23 +1099,19 @@ html[data-theme="light"] .contact-github-icon {
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .news-slider__item {
-    width: 340px !important;
-  }
-  
-  .news__item {
-    padding: 30px;
+    width: calc((100% - 20px) / 2) !important;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 767px) {
   .news-slider {
     margin-top: 45px;
   }
   
   .news-slider__item {
-    width: 300px !important;
+    width: 100% !important;
   }
   
   .news__item {

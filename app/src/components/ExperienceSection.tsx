@@ -2,36 +2,49 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { useTheme } from "./ThemeController";
 import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
 
 const experiences = [
   {
     id: 1,
-    date: { day: "2021", month: "Presente" },
+    date: { day: "2024", month: "Presente" },
     title: "Ingeniería de Software",
-    description: "Estudiante de Ingeniería de Software en la Universidad. Enfocado en desarrollo web, especialmente frontend, aprendiendo tecnologías modernas y mejores prácticas de programación.",
-    image: "/avatar_sebas.jpeg",
+    description: "Universidad Cooperativa de Colombia, Campus Pasto. Quinto semestre. Formación en desarrollo de software con énfasis en programación, bases de datos, estructuras de datos y desarrollo web. Experiencia práctica a través de proyectos académicos.",
+    image: "/cooperativa.jpg",
   },
   {
     id: 2,
-    date: { day: "2023", month: "2024" },
-    title: "Proyecto Freelance",
-    description: "Desarrollo de sitio web para cliente local. Implementación de diseño responsivo y funcionalidades personalizadas usando React y Next.js.",
-    image: "/avatar_sebas.jpeg",
+    date: { day: "2026", month: "" },
+    title: "Desarrollador Web Freelance",
+    description: "Impulsa 360. Desarrollo de la página web corporativa de la empresa, incluyendo diseño de interfaz y maquetación frontend.",
+    image: "/impulsa360.jpeg",
   },
   {
     id: 3,
     date: { day: "2024", month: "" },
-    title: "Proyectos Académicos",
-    description: "Desarrollo de múltiples proyectos universitarios aplicando conocimientos de frontend, backend y bases de datos. Trabajo en equipo y metodologías ágiles.",
-    image: "/avatar_sebas.jpeg",
+    title: "Asistente de Inventario",
+    description: "Krol Nails. Gestión y organización de inventario, atención al cliente y manejo de productos.",
+    image: "/krolnails.jpg",
+  },
+  {
+    id: 4,
+    date: { day: "2025", month: "" },
+    title: "Asistente de Tienda",
+    description: "Local de ropa. Control de stock, organización de productos y trabajo en equipo.",
+    image: "/ropatienda.jpg",
+  },
+  {
+    id: 5,
+    date: { day: "2024", month: "2026" },
+    title: "Idiomas",
+    description: "Español — Nativo. Inglés — Básico-Intermedio (A2/B1). Capacidad de comunicación en ambos idiomas para entornos profesionales y académicos.",
+    image: "/ingles.jpg",
   },
 ];
 
@@ -43,54 +56,59 @@ export default function ExperienceSection() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.currentTarget as HTMLElement;
-      const rect = target.getBoundingClientRect();
-      const bg = itemBgRef.current;
-      const wrapper = document.querySelector('.news-wrapper');
-      
-      if (bg && wrapper) {
-        const wrapperRect = wrapper.getBoundingClientRect();
-        bg.classList.add('active');
-        bg.style.width = rect.width + 'px';
-        bg.style.height = rect.height + 'px';
-        bg.style.left = (rect.left - wrapperRect.left) + 'px';
-        bg.style.top = (rect.top - wrapperRect.top) + 'px';
-      }
-      
-      // Remove active from all items
-      document.querySelectorAll('.news__item').forEach(item => {
-        item.classList.remove('active');
-      });
-      target.classList.add('active');
-    };
+    // Delay to ensure Swiper is fully initialized
+    const timer = setTimeout(() => {
+      const handleMouseOver = (e: MouseEvent) => {
+        const target = e.currentTarget as HTMLElement;
+        const rect = target.getBoundingClientRect();
+        const bg = itemBgRef.current;
+        const wrapper = document.querySelector('.news-wrapper');
+        
+        if (bg && wrapper) {
+          const wrapperRect = wrapper.getBoundingClientRect();
+          bg.classList.add('active');
+          bg.style.width = rect.width + 'px';
+          bg.style.height = rect.height + 'px';
+          bg.style.left = (rect.left - wrapperRect.left) + 'px';
+          bg.style.top = (rect.top - wrapperRect.top) + 'px';
+        }
+        
+        // Remove active from all items
+        document.querySelectorAll('.news__item').forEach(item => {
+          item.classList.remove('active');
+        });
+        target.classList.add('active');
+      };
 
-    const handleMouseLeave = () => {
-      const bg = itemBgRef.current;
-      
-      if (bg) {
-        bg.classList.remove('active');
-      }
-      
-      // Remove active from all items
-      document.querySelectorAll('.news__item').forEach(item => {
-        item.classList.remove('active');
-      });
-    };
+      const handleMouseLeave = () => {
+        const bg = itemBgRef.current;
+        
+        if (bg) {
+          bg.classList.remove('active');
+        }
+        
+        // Remove active from all items
+        document.querySelectorAll('.news__item').forEach(item => {
+          item.classList.remove('active');
+        });
+      };
 
-    const newsItems = document.querySelectorAll('.news__item');
-    newsItems.forEach((item) => {
-      item.addEventListener('mouseover', handleMouseOver as EventListener);
-      item.addEventListener('mouseleave', handleMouseLeave as EventListener);
-    });
-
-    return () => {
+      const newsItems = document.querySelectorAll('.news__item');
       newsItems.forEach((item) => {
-        item.removeEventListener('mouseover', handleMouseOver as EventListener);
-        item.removeEventListener('mouseleave', handleMouseLeave as EventListener);
+        item.addEventListener('mouseover', handleMouseOver as EventListener);
+        item.addEventListener('mouseleave', handleMouseLeave as EventListener);
       });
-    };
-  }, []);
+
+      return () => {
+        newsItems.forEach((item) => {
+          item.removeEventListener('mouseover', handleMouseOver as EventListener);
+          item.removeEventListener('mouseleave', handleMouseLeave as EventListener);
+        });
+      };
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [swiperInstance]);
 
   const handleSlideChange = (swiper: SwiperType) => {
     const activeSlide = swiper.slides[swiper.activeIndex];
@@ -160,19 +178,13 @@ export default function ExperienceSection() {
         <div ref={itemBgRef} className="item-bg"></div>
         
         <Swiper
-          effect="coverflow"
           grabCursor={true}
-          centeredSlides={true}
-          slidesPerView="auto"
-          loop={true}
+          centeredSlides={false}
+          slidesPerView={3}
+          spaceBetween={20}
+          loop={false}
           speed={300}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 0,
-            modifier: 3,
-            slideShadows: false,
-          }}
+          initialSlide={0}
           navigation={{
             nextEl: ".news-slider-next",
             prevEl: ".news-slider-prev",
@@ -181,7 +193,24 @@ export default function ExperienceSection() {
             el: ".news-slider__pagination",
             clickable: true,
           }}
-          modules={[Navigation, Pagination, EffectCoverflow]}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+              centeredSlides: true,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+              centeredSlides: false,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+              centeredSlides: false,
+            },
+          }}
+          modules={[Navigation, Pagination]}
           className="news-slider"
           onSwiper={setSwiperInstance}
           onSlideChangeTransitionEnd={handleSlideChange}

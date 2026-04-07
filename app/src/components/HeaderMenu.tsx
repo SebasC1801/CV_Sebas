@@ -10,8 +10,9 @@ const menuItems = [
   { index: "02", label: "Acerca de mí", href: "#about" },
   { index: "03", label: "Proyectos", href: "#projects" },
   { index: "04", label: "Skills", href: "#skills" },
-  { index: "05", label: "Testimonios", href: "#testimonials" },
-  { index: "06", label: "Contacto", href: "#contact" },
+  { index: "05", label: "Experiencia", href: "#experience" },
+  { index: "06", label: "Testimonios", href: "#testimonials" },
+  { index: "07", label: "Contacto", href: "#contact" },
 ];
 
 export default function HeaderMenu() {

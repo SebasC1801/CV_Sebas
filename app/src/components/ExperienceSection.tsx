@@ -194,22 +194,17 @@ export default function ExperienceSection() {
             clickable: true,
           }}
           breakpoints={{
-            320: {
+            0: {
               slidesPerView: 1,
-              spaceBetween: 10,
+              spaceBetween: 0,
               centeredSlides: true,
             },
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 15,
-              centeredSlides: true,
-            },
-            768: {
+            900: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 15,
               centeredSlides: false,
             },
-            1024: {
+            1100: {
               slidesPerView: 3,
               spaceBetween: 20,
               centeredSlides: false,

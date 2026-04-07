@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 const experiences = [
   {
     id: 1,
-    date: { day: "2024", month: "Presente" },
+    date: { day: "2024", month: "" },
     title: "Ingeniería de Software",
     description: "Universidad Cooperativa de Colombia, Campus Pasto. Quinto semestre. Formación en desarrollo de software con énfasis en programación, bases de datos, estructuras de datos y desarrollo web. Experiencia práctica a través de proyectos académicos.",
     image: "/cooperativa.jpg",
@@ -41,7 +41,7 @@ const experiences = [
   },
   {
     id: 5,
-    date: { day: "2024", month: "2026" },
+    date: { day: "2024", month: "" },
     title: "Idiomas",
     description: "Español — Nativo. Inglés — Básico-Intermedio (A2/B1). Capacidad de comunicación en ambos idiomas para entornos profesionales y académicos.",
     image: "/ingles.jpg",

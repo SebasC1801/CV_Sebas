@@ -1110,9 +1110,12 @@ html[data-theme="light"] .contact-github-icon {
   padding: 40px;
   color: var(--foreground);
   border-radius: 10px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transition: all 0.3s;
   text-decoration: none;
+  height: 540px;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 800px) {
@@ -1193,7 +1196,7 @@ html[data-theme="light"] .contact-github-icon {
   border-radius: 10px;
   box-shadow: 0 6px 26px 6px rgba(0, 0, 0, 0.25);
   height: 200px;
-  margin-top: 30px;
+  margin-top: auto;
   width: 100%;
   transition: all 0.3s;
   transform-origin: 0% 0%;

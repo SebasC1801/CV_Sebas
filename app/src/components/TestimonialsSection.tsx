@@ -6,20 +6,26 @@ import { useTheme } from "./ThemeController";
 const testimonials = [
   {
     id: 1,
-    name: "Testimonio 1",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod mauris bibendum quam bibendum luctus. In sed erat vel arcu rutrum elementum non a turpis. Integer dignissim nisl eget tellus iaculis consectetur.",
+    name: "Andrés Mejía",
+    role: "Compañero de equipo",
+    text: "Trabajar con Sebastián en el proyecto fue muy buena experiencia. Se nota que le apasiona el frontend, siempre estaba pendiente de que la interfaz quedara bien hecha y era receptivo cuando había que hacer ajustes. Cumplió con su parte sin necesidad de estar encima de él.",
+    image: "/senior1.jpg",
     color: "rgb(71, 166, 185)",
   },
   {
     id: 2,
-    name: "Testimonio 2",
-    text: "Proin dolor massa, feugiat sit amet fringilla ac, pellentesque vitae nisl. Curabitur at auctor velit, ut ullamcorper nulla erat id neque. Vestibulum vel sollicitudin lacus.",
+    name: "Carolina Ruiz",
+    role: "Docente de Desarrollo Web",
+    text: "Sebastián es un estudiante comprometido con lo que hace. En los proyectos del curso se destacó por la calidad visual y funcional de sus entregas, y por buscar siempre ir un poco más allá de los requisitos mínimos. Tiene buenas bases y una actitud que lo va a llevar lejos.",
+    image: "/seniora3.jpg",
     color: "rgb(211, 212, 217)",
   },
   {
     id: 3,
-    name: "Testimonio 3",
-    text: "Proin pellentesque, justo a ornare posuere, justo elit tincidunt mi, a efficitur tellus risus in elit. Aenean et neque metus. Morbi porta viverra tellus, non volutpat lectus tincidunt quis.",
+    name: "Jorge Patiño",
+    role: "Cliente",
+    text: "Le pedí a Sebastián que me ayudara con una página sencilla para mi negocio y quedé satisfecho con el resultado. Se comunicó bien durante el proceso, preguntó lo que necesitaba saber y entregó algo que realmente se veía profesional. Lo recomendaría.",
+    image: "/senior2.jpg",
     color: "rgb(255, 209, 103)",
   },
 ];
@@ -121,11 +127,28 @@ export default function TestimonialsSection() {
               style={{ backgroundColor: testimonial.color }}
             >
               <div className="testimonial-avatar">
-                {testimonial.name.charAt(0)}
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.name}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '50%'
+                  }}
+                />
               </div>
             </div>
             <div className="card-content">
               <h3>{testimonial.name}</h3>
+              <p className="testimonial-role" style={{
+                fontSize: '12px',
+                color: theme === 'dark' ? '#aaa' : '#666',
+                marginBottom: '10px',
+                fontStyle: 'italic'
+              }}>
+                {testimonial.role}
+              </p>
               <p>{testimonial.text}</p>
               <div className="card-navigation">
                 <div className="dots">

@@ -18,7 +18,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            HOLA, SOY <span className="hero-solid">SEBASTIAN</span>
+            HOLA, SOY <span className="hero-solid">SEBASTIAN CEBALLOS</span>
           </motion.span>
           <motion.span 
             className="hero-line hero-hollow"
@@ -37,18 +37,10 @@ export default function HeroSection() {
             SEBAS
           </motion.span>
           <motion.span 
-            className="hero-tag"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Soy diseñador UX/UI y desarrollador web front-end
-          </motion.span>
-          <motion.span 
             className="hero-actions"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <a className="hero-button hero-button-primary" href="/cv.pdf">
               ver cv

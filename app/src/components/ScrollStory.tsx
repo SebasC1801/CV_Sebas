@@ -5,7 +5,6 @@ import { useMemo, useRef } from "react";
 import SkillsCarousel from "./SkillsCarousel";
 import GlowingCard from "./GlowingCard";
 import BookFlip from "./BookFlip";
-import ExperienceSection from "./ExperienceSection";
 
 type ScrollSection = {
   focus: string;
@@ -253,9 +252,6 @@ export default function ScrollStory() {
           </div>
         </div>
       </div>
-
-      {/* Sección de Experiencia Académica y Laboral */}
-      <ExperienceSection />
 
       <style jsx>{`
         /* --- Progress Indicators --- */

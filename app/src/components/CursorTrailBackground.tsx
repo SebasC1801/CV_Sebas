@@ -22,7 +22,7 @@ export default function CursorTrailBackground({
     if (!ctx) return;
 
     let mouseMoved = false;
-    const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
     const pointer = {
       x: 0.5 * window.innerWidth,
@@ -69,14 +69,14 @@ export default function CursorTrailBackground({
     };
 
     const update = (t: number) => {
-      // On mobile: always use subtle automatic movement
+      // On mobile: always use automatic movement (more visible)
       // On desktop: use automatic movement until mouse moves
       if (!mouseMoved || isMobile) {
         pointer.x =
-          (0.5 + 0.15 * Math.cos(0.001 * t) * Math.sin(0.002 * t)) *
+          (0.5 + 0.3 * Math.cos(0.002 * t) * Math.sin(0.003 * t)) *
           window.innerWidth;
         pointer.y =
-          (0.5 + 0.1 * Math.cos(0.002 * t) + 0.05 * Math.cos(0.003 * t)) *
+          (0.5 + 0.2 * Math.cos(0.003 * t) + 0.1 * Math.cos(0.005 * t)) *
           window.innerHeight;
       }
 

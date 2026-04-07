@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { useMemo, useRef } from "react";
 import SkillsCarousel from "./SkillsCarousel";
 import GlowingCard from "./GlowingCard";
-import BookFlip from "./BookFlip";
+import ProjectsSlider from "./ProjectsSlider";
 
 type ScrollSection = {
   focus: string;
@@ -34,7 +34,7 @@ const sections: ScrollSection[] = [
   {
     focus: "Proyectos",
     description:
-      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación. Arrastra las páginas del libro para explorar cada proyecto. Cada uno me ha permitido poner en práctica mis conocimientos, explorar nuevas tecnologías y mejorar mis habilidades como desarrollador.",
+      "Aquí puedes encontrar algunos de los proyectos que he desarrollado durante mi proceso de aprendizaje en programación. Cada uno me ha permitido poner en práctica mis conocimientos, explorar nuevas tecnologías y mejorar mis habilidades como desarrollador.",
     visual: "minimal-grid",
   },
 ];
@@ -77,13 +77,9 @@ function VisualLayer({
   progress: MotionValue<number>;
   className: string;
 }) {
-  // Para el libro (minimal-grid), no aplicamos animaciones de opacidad
+  // Para el libro (minimal-grid), ya no se usa
   if (visual === "minimal-grid") {
-    return (
-      <div className={className} style={{ opacity: 1, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <BookFlip />
-      </div>
-    );
+    return null;
   }
 
   const opacity = useTransform(
@@ -236,8 +232,8 @@ export default function ScrollStory() {
           </motion.p>
         </div>
         
-        <div className="w-full flex items-center justify-center" style={{ maxWidth: "700px", height: "clamp(280px, 50vw, 450px)" }}>
-          <BookFlip />
+        <div className="w-full">
+          <ProjectsSlider />
         </div>
       </div>
 

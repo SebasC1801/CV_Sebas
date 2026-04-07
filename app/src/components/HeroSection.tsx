@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <main className="intro-main relative z-10 flex min-h-screen items-center justify-center px-6 py-20">
+    <main className="intro-main relative z-10 flex min-h-[70vh] md:min-h-screen items-center justify-center px-4 md:px-6 py-12 md:py-20">
       <section className="hero-wrap w-full max-w-6xl px-6 text-center">
         <motion.p 
           className="hero-text hero-outline"

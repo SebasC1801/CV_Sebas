@@ -88,31 +88,32 @@ export default function TestimonialsSection() {
     <section style={{ 
       position: 'relative',
       width: '100%',
-      minHeight: '100vh',
-      padding: '4rem 2rem',
+      minHeight: 'auto',
+      padding: '3rem 1rem',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '3rem',
+      gap: '2rem',
       zIndex: 10
     }}>
       <div style={{ 
         maxWidth: '800px', 
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '0 0.5rem'
       }}>
         <h2 style={{ 
           fontFamily: 'var(--font-oswald), Oswald, sans-serif',
-          fontSize: 'clamp(2.5rem, 4vw, 4.5rem)',
+          fontSize: 'clamp(1.8rem, 4vw, 4.5rem)',
           fontWeight: 700,
           textTransform: 'uppercase',
           color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
-          marginBottom: '1.5rem'
+          marginBottom: '1rem'
         }}>
           Testimonios
         </h2>
         <p style={{
           fontFamily: 'var(--font-neuton), Neuton, sans-serif',
-          fontSize: '1.35rem',
+          fontSize: 'clamp(1rem, 2vw, 1.35rem)',
           lineHeight: 1.6,
           color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
           opacity: 0.85,

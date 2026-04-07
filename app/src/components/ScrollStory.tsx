@@ -152,13 +152,13 @@ export default function ScrollStory() {
       </div>
 
       {/* Header inicial con layout de dos columnas */}
-      <div className="grid md:flex md:flex-row">
+      <div className="grid lg:flex lg:flex-row">
         {/* Left Column: Header Content */}
-        <div className="w-full md:w-1/2 relative z-[5] md:z-2">
-          <header className="min-h-[90vh] flex flex-col items-start justify-center px-8 md:px-16 w-full">
+        <div className="w-full lg:w-1/2 relative z-[5]">
+          <header className="min-h-0 lg:min-h-[90vh] flex flex-col items-start justify-center px-6 md:px-12 lg:px-16 w-full py-10 lg:py-0">
             <div className="w-full flex flex-col items-start">
               <motion.p 
-                className="relative z-10 font-[family-name:var(--font-oswald)] text-[clamp(2.5rem,4vw,4.5rem)] font-medium leading-[1.1] text-[var(--foreground)] mb-8 tracking-[0.02em] uppercase"
+                className="relative z-10 font-[family-name:var(--font-oswald)] text-[clamp(2rem,4vw,4.5rem)] font-medium leading-[1.1] text-[var(--foreground)] mb-6 md:mb-8 tracking-[0.02em] uppercase"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
@@ -167,16 +167,16 @@ export default function ScrollStory() {
                 Acerca de mi
               </motion.p>
               <motion.div 
-                className="space-y-6 before:content-[''] before:block before:w-[40px] before:h-[1px] before:bg-[var(--accent,#fff)] before:mb-6 before:opacity-50"
+                className="space-y-4 md:space-y-6 before:content-[''] before:block before:w-[40px] before:h-[1px] before:bg-[var(--accent,#fff)] before:mb-6 before:opacity-50"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <p className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify">
+                <p className="font-[family-name:var(--font-neuton)] text-[clamp(1rem,2vw,1.35rem)] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify">
                   Soy estudiante universitario con interés en el desarrollo web, especialmente en el frontend. Me gusta aprender a crear interfaces modernas, intuitivas y visualmente atractivas que mejoren la experiencia de los usuarios. Actualmente me encuentro en proceso de aprendizaje, fortaleciendo mis bases en desarrollo web y explorando nuevas tecnologías.
                 </p>
-                <p className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify">
+                <p className="font-[family-name:var(--font-neuton)] text-[clamp(1rem,2vw,1.35rem)] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify">
                   Disfruto resolver problemas, practicar y desarrollar pequeños proyectos que me ayuden a seguir creciendo y mejorando mis habilidades como programador.
                 </p>
               </motion.div>
@@ -184,25 +184,32 @@ export default function ScrollStory() {
           </header>
         </div>
 
-        {/* Right Column: Empty with border */}
-        <div className="w-full md:w-1/2 fixed md:relative inset-0 h-full md:h-auto pointer-events-none md:pointer-events-auto z-1 opacity-15 md:opacity-100 mix-blend-overlay md:mix-blend-normal">
-          <div className="sticky top-0 h-screen w-full grid place-items-center border-l-0 md:border-l border-[var(--border)] overflow-hidden">
+        {/* Right Column: GlowingCard - hidden on mobile/tablet, sticky on desktop */}
+        <div className="hidden lg:block w-full lg:w-1/2 relative">
+          <div className="sticky top-0 h-screen w-full grid place-items-center border-l border-[var(--border)] overflow-hidden">
+            <GlowingCard />
+          </div>
+        </div>
+        
+        {/* Mobile/Tablet: GlowingCard below text, centered */}
+        <div className="block lg:hidden w-full flex justify-center pt-0 pb-4 px-8">
+          <div className="max-w-[300px] md:max-w-[350px] mx-auto">
             <GlowingCard />
           </div>
         </div>
       </div>
 
       {/* Sección de Proyectos centrada */}
-      <div className="min-h-screen w-full flex flex-col items-center justify-center py-16 px-8" id="projects">
-        <div style={{ maxWidth: "800px", textAlign: "center", marginBottom: "3rem" }}>
+      <div className="w-full flex flex-col items-center justify-center py-10 lg:py-16 px-4 md:px-8" id="projects">
+        <div style={{ maxWidth: "800px", textAlign: "center", marginBottom: "2rem" }}>
           <motion.h2
             style={{
               fontFamily: 'var(--font-oswald), Oswald, sans-serif',
-              fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
+              fontSize: "clamp(2rem, 4vw, 4.5rem)",
               fontWeight: 700,
               textTransform: "uppercase",
               color: "var(--foreground)",
-              marginBottom: "1.5rem",
+              marginBottom: "1rem",
             }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +221,7 @@ export default function ScrollStory() {
           <motion.p
             style={{
               fontFamily: 'var(--font-neuton), Neuton, sans-serif',
-              fontSize: "1.35rem",
+              fontSize: "clamp(1rem, 2vw, 1.35rem)",
               lineHeight: 1.6,
               color: "var(--foreground)",
               opacity: 0.85,
@@ -229,22 +236,22 @@ export default function ScrollStory() {
           </motion.p>
         </div>
         
-        <div className="flex items-center justify-center" style={{ width: "100%", minHeight: "500px" }}>
+        <div className="w-full flex items-center justify-center" style={{ maxWidth: "700px", height: "clamp(280px, 50vw, 450px)" }}>
           <BookFlip />
         </div>
       </div>
 
       {/* Sección de Skills centrada */}
-      <div id="skills" className="min-h-screen w-full flex flex-col items-center justify-center py-16 px-8">
-        <div style={{ maxWidth: "800px", textAlign: "center", marginBottom: "3rem" }}>
+      <div id="skills" className="w-full flex flex-col items-center justify-center py-10 lg:py-16 px-4 md:px-8">
+        <div style={{ maxWidth: "800px", textAlign: "center", marginBottom: "2rem" }}>
           <motion.h2
             style={{
               fontFamily: 'var(--font-oswald), Oswald, sans-serif',
-              fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
+              fontSize: "clamp(2rem, 4vw, 4.5rem)",
               fontWeight: 700,
               textTransform: "uppercase",
               color: "var(--foreground)",
-              marginBottom: "1.5rem",
+              marginBottom: "1rem",
             }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -256,7 +263,7 @@ export default function ScrollStory() {
           <motion.p
             style={{
               fontFamily: 'var(--font-neuton), Neuton, sans-serif',
-              fontSize: "1.35rem",
+              fontSize: "clamp(1rem, 2vw, 1.35rem)",
               lineHeight: 1.6,
               color: "var(--foreground)",
               opacity: 0.85,

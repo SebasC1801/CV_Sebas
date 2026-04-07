@@ -24,8 +24,8 @@ export default function GlowingCard() {
 
         .flip-card {
           position: relative;
-          width: 300px;
-          height: 400px;
+          width: 280px;
+          height: 370px;
           background-color: var(--surface);
           border-radius: 10px;
           display: flex;
@@ -35,6 +35,13 @@ export default function GlowingCard() {
           perspective: 1000px;
           box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
           transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @media screen and (min-width: 768px) {
+          .flip-card {
+            width: 300px;
+            height: 400px;
+          }
         }
 
         .flip-card__image {

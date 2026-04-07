@@ -84,19 +84,28 @@ body.tubes-paused .tubes-layer {
 
 .header-floating {
   position: fixed;
-  top: 24px;
-  right: 28px;
+  top: 16px;
+  right: 16px;
   z-index: 60;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   color: rgba(255, 255, 255, 0.7);
   pointer-events: auto;
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-radius: 999px;
   backdrop-filter: blur(10px);
+}
+
+@media screen and (min-width: 768px) {
+  .header-floating {
+    top: 24px;
+    right: 28px;
+    gap: 12px;
+    padding: 10px 12px;
+  }
 }
 
 .header-avatar {
@@ -174,17 +183,24 @@ html[data-theme="light"] .header-icon:hover {
   top: 0;
   bottom: 0;
   width: auto;
-  min-width: 350px;
+  min-width: 280px;
   max-width: 380px;
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  padding: 2rem 2.5rem 2rem 3rem;
+  padding: 2rem 1.5rem 2rem 2rem;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(20px);
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  .menu-floating {
+    min-width: 350px;
+    padding: 2rem 2.5rem 2rem 3rem;
+  }
 }
 
 html[data-theme="dark"] .menu-floating {
@@ -260,12 +276,18 @@ html[data-theme="dark"] .menu-index {
   font-family: var(--font-oswald), "Oswald", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  .menu-link {
+    font-size: 2.5rem;
+  }
 }
 
 .menu-link:hover {
@@ -883,6 +905,92 @@ html[data-theme="light"] .contact-github-icon {
   cursor: pointer;
 }
 
+@media screen and (max-width: 640px) {
+  .testimonials-container {
+    min-height: 420px;
+  }
+  
+  .testimonial-card {
+    width: 260px;
+  }
+  
+  .principal {
+    left: calc(50% - 130px);
+  }
+  
+  .siguiente {
+    left: calc(50% - 10px);
+  }
+  
+  .siguiente2 {
+    left: calc(50% + 80px);
+  }
+  
+  .anterior {
+    left: calc(50% - 250px);
+  }
+  
+  .anterior2 {
+    left: calc(50% - 340px);
+  }
+  
+  .card-image {
+    padding: 25px 15px;
+    min-height: 160px;
+  }
+  
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .card-content {
+    padding: 15px;
+    min-height: 180px;
+  }
+  
+  .card-content p {
+    font-size: 12px;
+  }
+  
+  .div-transparent-previous {
+    width: 120px;
+    right: calc(50% + 130px);
+  }
+  
+  .div-transparent-next {
+    width: 120px;
+    left: calc(50% + 130px);
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  .testimonials-container {
+    min-height: 480px;
+  }
+  
+  .testimonial-card {
+    width: 280px;
+  }
+  
+  .principal {
+    left: calc(50% - 140px);
+  }
+  
+  .siguiente {
+    left: calc(50% + 10px);
+  }
+  
+  .anterior {
+    left: calc(50% - 290px);
+  }
+  
+  .card-image {
+    padding: 30px 15px;
+    min-height: 180px;
+  }
+}
+
 
 /* Experience Section Styles */
 .news-wrapper {
@@ -912,6 +1020,28 @@ html[data-theme="light"] .contact-github-icon {
   opacity: 1;
 }
 
+@media screen and (max-width: 1023px) {
+  .item-bg {
+    display: none;
+  }
+  
+  .news-slider__item.swiper-slide-active .news__item {
+    background: var(--surface);
+    box-shadow: 0 6px 26px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+  
+  .news-slider__item.swiper-slide-active .news__item .news-date,
+  .news-slider__item.swiper-slide-active .news__item .news__title,
+  .news-slider__item.swiper-slide-active .news__item .news__txt {
+    opacity: 1;
+  }
+  
+  .news-slider__item.swiper-slide-active .news__item .news__img {
+    box-shadow: none;
+  }
+}
+
 .news-slider {
   position: relative;
   z-index: 2;
@@ -926,6 +1056,18 @@ html[data-theme="light"] .contact-github-icon {
   opacity: 1;
   pointer-events: auto;
   transition: all 0.3s;
+}
+
+@media screen and (max-width: 767px) {
+  .news-slider__item {
+    width: 85% !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .news-slider__item {
+    width: calc((100% - 20px) / 2) !important;
+  }
 }
 
 @media screen and (min-width: 1024px) {

@@ -22,6 +22,7 @@ export default function CursorTrailBackground({
     if (!ctx) return;
 
     let mouseMoved = false;
+    const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
 
     const pointer = {
       x: 0.5 * window.innerWidth,
@@ -52,17 +53,14 @@ export default function CursorTrailBackground({
     };
 
     const handleClick = (e: MouseEvent) => {
-      updateMousePosition(e.pageX, e.pageY);
+      if (!isMobile) updateMousePosition(e.pageX, e.pageY);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseMoved = true;
-      updateMousePosition(e.pageX, e.pageY);
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      mouseMoved = true;
-      updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
+      if (!isMobile) {
+        mouseMoved = true;
+        updateMousePosition(e.pageX, e.pageY);
+      }
     };
 
     const setupCanvas = () => {
@@ -71,13 +69,14 @@ export default function CursorTrailBackground({
     };
 
     const update = (t: number) => {
-      // for intro motion
-      if (!mouseMoved) {
+      // On mobile: always use subtle automatic movement
+      // On desktop: use automatic movement until mouse moves
+      if (!mouseMoved || isMobile) {
         pointer.x =
-          (0.5 + 0.3 * Math.cos(0.002 * t) * Math.sin(0.005 * t)) *
+          (0.5 + 0.15 * Math.cos(0.001 * t) * Math.sin(0.002 * t)) *
           window.innerWidth;
         pointer.y =
-          (0.5 + 0.2 * Math.cos(0.005 * t) + 0.1 * Math.cos(0.01 * t)) *
+          (0.5 + 0.1 * Math.cos(0.002 * t) + 0.05 * Math.cos(0.003 * t)) *
           window.innerHeight;
       }
 
@@ -107,14 +106,15 @@ export default function CursorTrailBackground({
         ctx.stroke();
       }
       ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
-      ctx.stroke(); // Default stroke is black, which is what we want for light mode
+      ctx.stroke();
 
       requestRef.current = window.requestAnimationFrame(update);
     };
 
-    window.addEventListener("click", handleClick);
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove);
+    if (!isMobile) {
+      window.addEventListener("click", handleClick);
+      window.addEventListener("mousemove", handleMouseMove);
+    }
     window.addEventListener("resize", setupCanvas);
 
     setupCanvas();
@@ -123,7 +123,6 @@ export default function CursorTrailBackground({
     return () => {
       window.removeEventListener("click", handleClick);
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", setupCanvas);
       if (requestRef.current) {
         window.cancelAnimationFrame(requestRef.current);

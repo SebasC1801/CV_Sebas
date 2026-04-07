@@ -403,8 +403,8 @@ export default function BookFlip() {
       <div
         id="book"
         style={{
-          width: "min(600px, 88%)",
-          height: "420px",
+          width: "min(600px, 95%)",
+          height: "clamp(280px, 50vw, 420px)",
           position: "relative",
           background: "#f0f0f0",
           boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
@@ -548,31 +548,31 @@ export default function BookFlip() {
           transform: scale(1.05) !important;
           box-shadow: 0 6px 30px rgba(0,0,0,0.4) !important;
         }
-        .page-number {
-          position: absolute;
-          bottom: 20px;
-          color: #888;
-          font-size: 14px;
-          font-weight: 500;
-        }
-        #left-front .page-number,
-        #left-under .page-number {
-          left: 20px;
-        }
-        #right-front .page-number,
-        #right-under .page-number {
-          right: 20px;
-        }
-        .flap-content.is-left .page-number {
-          left: 20px;
-          right: auto;
-        }
-        .flap-content.is-right .page-number {
-          right: 20px;
-          left: auto;
-        }
-        .book-container:active {
-          cursor: grabbing;
+        @media (max-width: 640px) {
+          .page, .flap-content {
+            padding: 15px !important;
+          }
+          .page h2, .flap-content h2 {
+            font-size: 1.2rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .page p, .flap-content p {
+            font-size: 0.7rem !important;
+            line-height: 1.4 !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .page span, .flap-content span {
+            font-size: 0.6rem !important;
+            padding: 0.2rem 0.5rem !important;
+          }
+          .page .news__img, .flap-content .news__img {
+            margin-top: 10px !important;
+            height: 120px !important;
+          }
+          .project-link {
+            padding: 0.4rem 0.8rem !important;
+            font-size: 0.7rem !important;
+          }
         }
       `}</style>
     </div>

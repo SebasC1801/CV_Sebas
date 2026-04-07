@@ -4,7 +4,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full py-4 px-6 border-t border-[var(--border)] bg-[var(--background)]">
+    <footer className="relative z-10 w-full py-4 px-6 border-t border-[var(--border)] bg-transparent">
       <div className="w-full flex items-center justify-center py-2">
         <div className="text-6xl md:text-8xl font-bold font-oswald tracking-widest text-[var(--foreground)] select-none">
           SEBAS

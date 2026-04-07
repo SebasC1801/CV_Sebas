@@ -1,10 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards, Mousewheel } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
+import "swiper/css";
+import "swiper/css/effect-cards";
 
 const projects = [
   {
     name: "Sonovibe",
+    subtitle: "Reproductor de Música",
     description: "Aplicación web de reproducción de música desarrollada con TypeScript, CSS y JavaScript. Diseñada con una interfaz fluida y atractiva, priorizando la experiencia del usuario.",
     tech: ["TypeScript", "JavaScript", "CSS"],
     image: "/Sonovibe.png",
@@ -12,6 +19,7 @@ const projects = [
   },
   {
     name: "Animal Care",
+    subtitle: "Clínica Veterinaria",
     description: "Aplicación fullstack para clínicas veterinarias construida con Java y JavaScript/HTML/CSS. Gestiona módulos de pacientes animales, doctores, citas médicas y más.",
     tech: ["Java", "JavaScript", "HTML", "CSS"],
     image: "/AnimalCare.png",
@@ -19,13 +27,15 @@ const projects = [
   },
   {
     name: "Multivar 3D",
-    description: "Calculadora graficadora multivariable fullstack en Python/Django y Three.js, con procesamiento simbólico vía WolframAlpha. Visualización 3D interactiva.",
+    subtitle: "Calculadora Graficadora",
+    description: "Calculadora graficadora multivariable fullstack en Python/Django y Three.js, con procesamiento simbólico vía WolframAlpha. Visualización 3D interactiva de superficies.",
     tech: ["Python", "Django", "Three.js"],
     image: "/Multivar3d.png",
     url: "https://multivar-3d.onrender.com",
   },
   {
     name: "Mentes Creativas",
+    subtitle: "Proyecto Grupal 3D",
     description: "Proyecto grupal en React + Vite con componentes 3D usando Three.js y React Three Fiber. Pruebas unitarias, CI/CD con GitHub Actions y despliegue en Vercel.",
     tech: ["React", "TypeScript", "Three.js", "Vite"],
     image: "/MentesCreativas.png",
@@ -34,93 +44,68 @@ const projects = [
 ];
 
 export default function ProjectsSlider() {
-  const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const slide = useCallback((direction: number) => {
-    setCurrent((prev) => {
-      let next = prev + direction;
-      if (next < 0) next = projects.length - 1;
-      if (next >= projects.length) next = 0;
-      return next;
-    });
-  }, []);
-
-  const startAutoplay = useCallback(() => {
-    intervalRef.current = setInterval(() => slide(1), 5000);
-  }, [slide]);
-
-  const stopAutoplay = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  }, []);
+  const [mounted, setMounted] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    startAutoplay();
-    return () => stopAutoplay();
-  }, [startAutoplay, stopAutoplay]);
+    setMounted(true);
+  }, []);
 
-  const p = projects[current];
+  if (!mounted) return null;
+
+  const p = projects[activeIndex];
 
   return (
-    <div className="pj-wrapper">
-      <div className="pj-outer">
-        {/* Controls outside */}
-        <button className="pj-btn pj-btn--prev" onClick={() => slide(-1)} aria-label="Previous">
-          &#8249;
-        </button>
-
-        <div
-          className="pj-carousel"
-          onMouseEnter={stopAutoplay}
-          onMouseLeave={startAutoplay}
-          onTouchStart={stopAutoplay}
-          onTouchEnd={startAutoplay}
-        >
-          {/* Image side */}
-          <div className="pj-image">
-            {projects.map((project, i) => (
-              <img
-                key={i}
-                src={project.image}
-                alt={project.name}
-                className={`pj-img ${i === current ? "pj-img--active" : ""}`}
-              />
-            ))}
-          </div>
-
-          {/* Text side */}
-          <div className="pj-content">
-            <h3 className="pj-name">{p.name}</h3>
-            <p className="pj-desc">{p.description}</p>
-            <div className="pj-tags">
-              {p.tech.map((t) => (
-                <span key={t}>{t}</span>
-              ))}
-            </div>
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pj-link"
-            >
-              Ver Proyecto →
-            </a>
-          </div>
+    <div className="pj-cards-wrapper">
+      <div className="pj-cards-info">
+        <h3 className="pj-cards-name">{p.name}</h3>
+        <span className="pj-cards-subtitle">{p.subtitle}</span>
+        <p className="pj-cards-desc">{p.description}</p>
+        <div className="pj-cards-tags">
+          {p.tech.map((t) => (
+            <span key={t}>{t}</span>
+          ))}
         </div>
-
-        <button className="pj-btn pj-btn--next" onClick={() => slide(1)} aria-label="Next">
-          &#8250;
-        </button>
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pj-cards-btn"
+        >
+          Ver Proyecto
+        </a>
       </div>
 
-      <div className="pj-dots">
-        {projects.map((_, i) => (
-          <div
-            key={i}
-            className={`pj-dot ${i === current ? "pj-dot--active" : ""}`}
-            onClick={() => setCurrent(i)}
-          />
-        ))}
+      <div className="pj-cards-swiper-wrap">
+        <Swiper
+          effect="cards"
+          grabCursor={true}
+          initialSlide={0}
+          speed={500}
+          loop={true}
+          mousewheel={{
+            invert: false,
+          }}
+          cardsEffect={{
+            rotate: true,
+            perSlideOffset: 8,
+            perSlideRotate: 2,
+          }}
+          modules={[EffectCards, Mousewheel]}
+          className="pj-cards-swiper"
+          onSlideChange={(swiper: SwiperType) => {
+            setActiveIndex(swiper.realIndex);
+          }}
+        >
+          {projects.map((project, i) => (
+            <SwiperSlide key={i} className="pj-cards-slide">
+              <img src={project.image} alt={project.name} />
+              <div className="pj-cards-overlay">
+                <h2>{project.name}</h2>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

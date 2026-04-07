@@ -15,7 +15,8 @@ const skillIcons = [
 
 export default function SkillsCarousel() {
   const [mounted, setMounted] = useState(false);
-  const n = skillIcons.length;
+  const totalDuration = 12; // duración total de la animación en segundos
+  const delayPerCard = totalDuration / skillIcons.length;
 
   useEffect(() => {
     setMounted(true);
@@ -24,13 +25,16 @@ export default function SkillsCarousel() {
   if (!mounted) return null;
 
   return (
-    <div className="skills-carousel-scene">
-      <div className="skills-carousel-3d" style={{ "--n": n } as React.CSSProperties}>
-        {skillIcons.map((skill, i) => (
+    <div className="skills-carrousel-container">
+      <div className="skills-carrousel">
+        {skillIcons.map((skill, index) => (
           <div
             key={skill.name}
-            className="skills-carousel-card"
-            style={{ "--i": i } as React.CSSProperties}
+            className="skills-card"
+            id={`skill-${index}`}
+            style={{
+              animationDelay: `${-index * delayPerCard}s`,
+            }}
           >
             <img 
               src={skill.path} 

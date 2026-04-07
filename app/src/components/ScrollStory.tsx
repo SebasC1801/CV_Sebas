@@ -221,35 +221,45 @@ export default function ScrollStory() {
         </div>
       </div>
 
-      {/* Sección con carrusel - Diseño que cuenta historias */}
-      <div id="skills" className="min-h-screen w-full flex items-center py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-16 max-w-[1400px] mx-auto">
-          {/* Texto izquierdo - mitad izquierda */}
-          <div className="flex flex-col justify-center px-8 lg:px-16 space-y-6">
-            <motion.p 
-              className="font-[family-name:var(--font-oswald)] text-[clamp(2.5rem,4vw,4.5rem)] font-medium leading-[1.1] text-[var(--foreground)] tracking-[0.02em] uppercase"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {sections[0].focus}
-            </motion.p>
-            <motion.p 
-              className="font-[family-name:var(--font-neuton)] text-[1.35rem] text-[var(--foreground)] opacity-85 leading-[1.6] font-normal text-justify"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 0.85, y: 0 }}
-              viewport={{ once: false, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {sections[0].description}
-            </motion.p>
-          </div>
-          
-          {/* Carrusel derecho - mitad derecha */}
-          <div className="flex items-center justify-center px-8 lg:px-16">
-            <SkillsCarousel />
-          </div>
+      {/* Sección de Skills centrada */}
+      <div id="skills" className="min-h-screen w-full flex flex-col items-center justify-center py-16 px-8">
+        <div style={{ maxWidth: "800px", textAlign: "center", marginBottom: "3rem" }}>
+          <motion.h2
+            style={{
+              fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+              fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              color: "var(--foreground)",
+              marginBottom: "1.5rem",
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {sections[0].focus}
+          </motion.h2>
+          <motion.p
+            style={{
+              fontFamily: 'var(--font-neuton), Neuton, sans-serif',
+              fontSize: "1.35rem",
+              lineHeight: 1.6,
+              color: "var(--foreground)",
+              opacity: 0.85,
+              textAlign: "justify",
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 0.85, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {sections[0].description}
+          </motion.p>
+        </div>
+        
+        <div className="flex items-center justify-center">
+          <SkillsCarousel />
         </div>
       </div>
 

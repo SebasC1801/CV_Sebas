@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useTheme } from "./ThemeController";
+import ScrollReveal from "./ScrollReveal";
 import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
@@ -147,34 +148,37 @@ export default function ExperienceSection() {
         zIndex: 10,
       }}
     >
-      <div style={{ maxWidth: "800px", textAlign: "center", padding: "0 0.5rem" }}>
-        <h2
-          style={{
-            fontFamily: 'var(--font-oswald), Oswald, sans-serif',
-            fontSize: "clamp(1.8rem, 4vw, 4.5rem)",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            color: theme === "dark" ? "#ffffff" : "#1b1b1b",
-            marginBottom: "1rem",
-          }}
-        >
-          Experiencia Académica y Laboral
-        </h2>
-        <p
-          style={{
-            fontFamily: 'var(--font-neuton), Neuton, sans-serif',
-            fontSize: "clamp(1rem, 2vw, 1.35rem)",
-            lineHeight: 1.6,
-            color: theme === "dark" ? "#ffffff" : "#1b1b1b",
-            opacity: 0.85,
-            textAlign: "justify",
-          }}
-        >
-          Mi trayectoria académica y profesional refleja mi compromiso con el aprendizaje continuo y el desarrollo de habilidades en programación y diseño web.
-        </p>
-      </div>
+      <ScrollReveal>
+        <div style={{ maxWidth: "800px", textAlign: "center", padding: "0 0.5rem" }}>
+          <h2
+            style={{
+              fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+              fontSize: "clamp(1.8rem, 4vw, 4.5rem)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              color: theme === "dark" ? "#ffffff" : "#1b1b1b",
+              marginBottom: "1rem",
+            }}
+          >
+            Experiencia Académica y Laboral
+          </h2>
+          <p
+            style={{
+              fontFamily: 'var(--font-neuton), Neuton, sans-serif',
+              fontSize: "clamp(1rem, 2vw, 1.35rem)",
+              lineHeight: 1.6,
+              color: theme === "dark" ? "#ffffff" : "#1b1b1b",
+              opacity: 0.85,
+              textAlign: "justify",
+            }}
+          >
+            Mi trayectoria académica y profesional refleja mi compromiso con el aprendizaje continuo y el desarrollo de habilidades en programación y diseño web.
+          </p>
+        </div>
+      </ScrollReveal>
 
-      <div className="news-wrapper">
+      <ScrollReveal delay={0.1}>
+        <div className="news-wrapper">
         <div ref={itemBgRef} className="item-bg"></div>
         
         <Swiper
@@ -251,6 +255,7 @@ export default function ExperienceSection() {
           <div className="news-slider__pagination"></div>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

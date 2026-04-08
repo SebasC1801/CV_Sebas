@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTheme } from "./ThemeController";
+import ScrollReveal from "./ScrollReveal";
 
 const testimonials = [
   {
@@ -96,34 +97,37 @@ export default function TestimonialsSection() {
       gap: '2rem',
       zIndex: 10
     }}>
-      <div style={{ 
-        maxWidth: '800px', 
-        textAlign: 'center',
-        padding: '0 0.5rem'
-      }}>
-        <h2 style={{ 
-          fontFamily: 'var(--font-oswald), Oswald, sans-serif',
-          fontSize: 'clamp(1.8rem, 4vw, 4.5rem)',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
-          marginBottom: '1rem'
+      <ScrollReveal>
+        <div style={{ 
+          maxWidth: '800px', 
+          textAlign: 'center',
+          padding: '0 0.5rem'
         }}>
-          Testimonios
-        </h2>
-        <p style={{
-          fontFamily: 'var(--font-neuton), Neuton, sans-serif',
-          fontSize: 'clamp(1rem, 2vw, 1.35rem)',
-          lineHeight: 1.6,
-          color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
-          opacity: 0.85,
-          textAlign: 'justify'
-        }}>
-          A lo largo de mi formación he tenido la oportunidad de colaborar con distintas personas en proyectos académicos y personales. A continuación, algunas de sus opiniones sobre nuestra experiencia trabajando juntos.
-        </p>
-      </div>
+          <h2 style={{ 
+            fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+            fontSize: 'clamp(1.8rem, 4vw, 4.5rem)',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
+            marginBottom: '1rem'
+          }}>
+            Testimonios
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-neuton), Neuton, sans-serif',
+            fontSize: 'clamp(1rem, 2vw, 1.35rem)',
+            lineHeight: 1.6,
+            color: theme === 'dark' ? '#ffffff' : '#1b1b1b',
+            opacity: 0.85,
+            textAlign: 'justify'
+          }}>
+            A lo largo de mi formación he tenido la oportunidad de colaborar con distintas personas en proyectos académicos y personales. A continuación, algunas de sus opiniones sobre nuestra experiencia trabajando juntos.
+          </p>
+        </div>
+      </ScrollReveal>
 
-      <div className="testimonials-container">
+      <ScrollReveal delay={0.1}>
+        <div className="testimonials-container">
         {testimonials.map((testimonial, index) => (
           <div
             key={testimonial.id}
@@ -203,6 +207,7 @@ export default function TestimonialsSection() {
           <div className="div-transparent-next" onClick={nextCard}></div>
         )}
       </div>
+      </ScrollReveal>
     </section>
   );
 }

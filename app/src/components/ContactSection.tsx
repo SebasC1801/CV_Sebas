@@ -1,19 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTheme } from "./ThemeController";
+import ScrollReveal from "./ScrollReveal";
 
 export default function ContactSection() {
   const { theme } = useTheme();
   
   return (
     <section className="relative z-10 w-full py-12 md:py-40 px-4 md:px-6 flex flex-col items-center justify-center min-h-[50vh] md:min-h-[70vh]">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center w-full max-w-4xl"
-      >
+      <ScrollReveal className="text-center w-full max-w-4xl">
         <p className="font-neuton text-base md:text-xl tracking-widest mb-4 md:mb-6 opacity-70">
           ¿TIENES UN PROYECTO EN MENTE?
         </p>
@@ -71,7 +66,7 @@ export default function ContactSection() {
             </a>
           </div>
         </div>
-      </motion.div>
+      </ScrollReveal>
     </section>
   );
 }

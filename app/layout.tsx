@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "CV-Sebastian",
   description: "Portafolio personal",
   icons: {
-    icon: '/avatar_sebas.jpeg',
+    icon: '/avatar_sebas.png',
   },
 };
 

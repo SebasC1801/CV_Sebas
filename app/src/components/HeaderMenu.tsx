@@ -28,7 +28,7 @@ export default function HeaderMenu() {
     <>
       <header className="header-floating">
         <div className="header-avatar">
-          <img src="/avatar_sebas.jpeg" alt="Sebastian Ceballos" />
+          <img src="/avatar_sebas.png" alt="Sebastian Ceballos" />
         </div>
         <button
           className="header-icon"

@@ -1522,11 +1522,11 @@ html[data-theme="light"] .pj-cards-btn {
 /* Scroll Reveal */
 .sr-reveal {
   opacity: 0 !important;
-  transform: translateY(50px) scale(0.95) !important;
+  transform: scale(0.95) !important;
   transition: opacity 0.6s ease, transform 0.6s ease !important;
 }
 
 .sr-reveal.sr-visible {
   opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
+  transform: scale(1) !important;
 }

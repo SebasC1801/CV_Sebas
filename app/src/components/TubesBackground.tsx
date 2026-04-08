@@ -39,43 +39,49 @@ function TubesCanvas({
 
   useEffect(() => {
     let mounted = true;
+    let retryTimeout: ReturnType<typeof setTimeout>;
 
-    // Dynamically import the library from CDN
-    // Using /* webpackIgnore: true */ to prevent webpack from trying to bundle this URL
-    import(
-      // @ts-ignore
-      /* webpackIgnore: true */ "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js"
-    )
-      .then((module) => {
-        if (!mounted || !canvasRef.current) return;
+    const initTubes = () => {
+      import(
+        // @ts-ignore
+        /* webpackIgnore: true */ "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js"
+      )
+        .then((module) => {
+          if (!mounted || !canvasRef.current) return;
 
-        const TubesCursor = module.default;
+          const TubesCursor = module.default;
 
-        // Initialize the tubes animation
-        const app = TubesCursor(canvasRef.current, {
-          tubes: {
-            colors: colors,
-            lights: {
-              intensity: intensity,
-              colors: lightsColors,
+          const app = TubesCursor(canvasRef.current, {
+            tubes: {
+              colors: colors,
+              lights: {
+                intensity: intensity,
+                colors: lightsColors,
+              },
             },
-          },
-        });
-        
-        appRef.current = app;
+          });
+          
+          appRef.current = app;
 
-        // Setup resize handler if needed (though the library might handle it or we rely on CSS)
-        // The library seems to handle resize internally or we just let it fit the canvas which fits the window
-      })
-      .catch((err) => {
-        console.error("Failed to load tubes script:", err);
-      });
+          // Multiple resize dispatches to catch the moment the container becomes visible
+          const delays = [200, 600, 1200, 2000];
+          delays.forEach((delay) => {
+            setTimeout(() => {
+              if (mounted) window.dispatchEvent(new Event('resize'));
+            }, delay);
+          });
+        })
+        .catch((err) => {
+          console.error("Failed to load tubes script:", err);
+        });
+    };
+
+    // Delay init to give the page time to become visible (opacity transition)
+    retryTimeout = setTimeout(initTubes, 800);
 
     return () => {
       mounted = false;
-      // Cleanup if the library supports it, otherwise we might have a leak
-      // The provided code doesn't show a destroy method, so we assume it's fine for now
-      // or we just remove the canvas which is what React does.
+      clearTimeout(retryTimeout);
     };
   }, [colors, lightsColors, intensity]);
 

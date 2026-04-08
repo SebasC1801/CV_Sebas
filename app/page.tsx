@@ -49,9 +49,6 @@ export default function Home() {
       <LoadingScreen />
       <div className={`relative min-h-screen bg-[var(--background)] text-[var(--foreground)] ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
         <TubesBackground />
-        <div className="intro-tubes-bg">
-          <TubesBackground disableClick />
-        </div>
         <HeaderMenu />
         <div id="home">
           <HeroSection />

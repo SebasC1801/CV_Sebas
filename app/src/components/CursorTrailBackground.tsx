@@ -31,7 +31,7 @@ export default function CursorTrailBackground({
     
     const params = {
       pointsNumber: 40,
-      widthFactor: 0.3,
+      widthFactor: isMobile ? 0.15 : 0.3,
       mouseThreshold: 0.6,
       spring: 0.4,
       friction: 0.5,
@@ -72,15 +72,19 @@ export default function CursorTrailBackground({
       // On mobile: always use automatic movement (more visible)
       // On desktop: use automatic movement until mouse moves
       if (!mouseMoved || isMobile) {
+        const ampX = isMobile ? 0.15 : 0.3;
+        const ampY = isMobile ? 0.1 : 0.2;
+        const ampY2 = isMobile ? 0.05 : 0.1;
         pointer.x =
-          (0.5 + 0.3 * Math.cos(0.002 * t) * Math.sin(0.003 * t)) *
+          (0.5 + ampX * Math.cos(0.002 * t) * Math.sin(0.003 * t)) *
           window.innerWidth;
         pointer.y =
-          (0.5 + 0.2 * Math.cos(0.003 * t) + 0.1 * Math.cos(0.005 * t)) *
+          (0.5 + ampY * Math.cos(0.003 * t) + ampY2 * Math.cos(0.005 * t)) *
           window.innerHeight;
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = isMobile ? 0.3 : 1;
       
       // Draw trail
       trail.forEach((p, pIdx) => {

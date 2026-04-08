@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Neuton, Oswald, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeController } from "./src/components/ThemeController";
+import { LanguageController } from "./src/components/LanguageController";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -40,7 +41,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${neuton.variable} ${oswald.variable} antialiased`}
       >
-        <ThemeController>{children}</ThemeController>
+        <ThemeController>
+          <LanguageController>{children}</LanguageController>
+        </ThemeController>
       </body>
     </html>
   );

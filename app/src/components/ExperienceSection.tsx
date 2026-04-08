@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useTheme } from "./ThemeController";
+import { useLanguage } from "./LanguageController";
+import { t } from "../i18n/translations";
 import ScrollReveal from "./ScrollReveal";
 import type { Swiper as SwiperType } from "swiper";
 
@@ -11,46 +13,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const experiences = [
-  {
-    id: 1,
-    date: { day: "2024", month: "" },
-    title: "Ingeniería de Software",
-    description: "Universidad Cooperativa de Colombia, Campus Pasto. Quinto semestre. Formación en desarrollo de software con énfasis en programación, bases de datos, estructuras de datos y desarrollo web. Experiencia práctica a través de proyectos académicos.",
-    image: "/cooperativa.jpg",
-  },
-  {
-    id: 2,
-    date: { day: "2026", month: "" },
-    title: "Desarrollador Web Freelance",
-    description: "Impulsa 360. Desarrollo de la página web corporativa de la empresa, incluyendo diseño de interfaz y maquetación frontend.",
-    image: "/impulsa360.jpeg",
-  },
-  {
-    id: 3,
-    date: { day: "2024", month: "" },
-    title: "Asistente de Inventario",
-    description: "Krol Nails. Gestión y organización de inventario, atención al cliente y manejo de productos.",
-    image: "/krolnails.jpg",
-  },
-  {
-    id: 4,
-    date: { day: "2025", month: "" },
-    title: "Asistente de Tienda",
-    description: "Local de ropa. Control de stock, organización de productos y trabajo en equipo.",
-    image: "/ropatienda.jpg",
-  },
-  {
-    id: 5,
-    date: { day: "2024", month: "" },
-    title: "Idiomas",
-    description: "Español — Nativo. Inglés — Básico-Intermedio (A2/B1). Capacidad de comunicación en ambos idiomas para entornos profesionales y académicos.",
-    image: "/ingles.jpg",
-  },
+const experiencesMeta = [
+  { id: 1, date: { day: "2024", month: "" }, image: "/cooperativa.jpg" },
+  { id: 2, date: { day: "2026", month: "" }, image: "/impulsa360.jpeg" },
+  { id: 3, date: { day: "2024", month: "" }, image: "/krolnails.jpg" },
+  { id: 4, date: { day: "2025", month: "" }, image: "/ropatienda.jpg" },
+  { id: 5, date: { day: "2024", month: "" }, image: "/ingles.jpg" },
 ];
 
 export default function ExperienceSection() {
   const { theme } = useTheme();
+  const { lang } = useLanguage();
+  const tr = t(lang);
   const itemBgRef = useRef<HTMLDivElement>(null);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
@@ -160,7 +134,7 @@ export default function ExperienceSection() {
               marginBottom: "1rem",
             }}
           >
-            Experiencia Académica y Laboral
+            {tr.experience.title}
           </h2>
           <p
             style={{
@@ -172,7 +146,7 @@ export default function ExperienceSection() {
               textAlign: "justify",
             }}
           >
-            Mi trayectoria académica y profesional refleja mi compromiso con el aprendizaje continuo y el desarrollo de habilidades en programación y diseño web.
+            {tr.experience.description}
           </p>
         </div>
       </ScrollReveal>
@@ -224,7 +198,7 @@ export default function ExperienceSection() {
           onSlideChangeTransitionEnd={handleSlideChange}
           onInit={handleSlideChange}
         >
-          {experiences.map((exp) => (
+          {experiencesMeta.map((exp, idx) => (
             <SwiperSlide key={exp.id} className="news-slider__item">
               <a href="#" className="news__item">
                 <div className="news-date">
@@ -233,10 +207,10 @@ export default function ExperienceSection() {
                     <span className="news-date__txt">{exp.date.month}</span>
                   )}
                 </div>
-                <div className="news__title">{exp.title}</div>
-                <p className="news__txt">{exp.description}</p>
+                <div className="news__title">{tr.experience.items[idx].title}</div>
+                <p className="news__txt">{tr.experience.items[idx].description}</p>
                 <div className="news__img">
-                  <img src={exp.image} alt={exp.title} />
+                  <img src={exp.image} alt={tr.experience.items[idx].title} />
                 </div>
               </a>
             </SwiperSlide>

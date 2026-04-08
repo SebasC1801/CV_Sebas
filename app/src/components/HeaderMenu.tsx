@@ -1,24 +1,28 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Grip, Moon, Sun, X } from "lucide-react";
+import { Grip, Moon, Sun, X, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeController";
-
-const menuItems = [
-  { index: "01", label: "Inicio", href: "#home" },
-  { index: "02", label: "Acerca de mí", href: "#about" },
-  { index: "03", label: "Proyectos", href: "#projects" },
-  { index: "04", label: "Skills", href: "#skills" },
-  { index: "05", label: "Experiencia", href: "#experience" },
-  { index: "06", label: "Testimonios", href: "#testimonials" },
-  { index: "07", label: "Contacto", href: "#contact" },
-];
+import { useLanguage } from "./LanguageController";
+import { t } from "../i18n/translations";
 
 export default function HeaderMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { lang, toggleLang } = useLanguage();
+  const tr = t(lang);
+
+  const menuItems = [
+    { index: "01", label: tr.menu.home, href: "#home" },
+    { index: "02", label: tr.menu.about, href: "#about" },
+    { index: "03", label: tr.menu.projects, href: "#projects" },
+    { index: "04", label: tr.menu.skills, href: "#skills" },
+    { index: "05", label: tr.menu.experience, href: "#experience" },
+    { index: "06", label: tr.menu.testimonials, href: "#testimonials" },
+    { index: "07", label: tr.menu.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -33,9 +37,7 @@ export default function HeaderMenu() {
         <button
           className="header-icon"
           type="button"
-          aria-label={
-            theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-          }
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           onClick={toggleTheme}
           suppressHydrationWarning
         >
@@ -51,6 +53,16 @@ export default function HeaderMenu() {
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </motion.span>
           </AnimatePresence>
+        </button>
+        <button
+          className="header-icon"
+          type="button"
+          aria-label={lang === "es" ? "Switch to English" : "Cambiar a Español"}
+          onClick={toggleLang}
+          title={lang === "es" ? "EN" : "ES"}
+          style={{ fontSize: "13px", fontWeight: 600, fontFamily: "var(--font-oswald)" }}
+        >
+          {lang === "es" ? "EN" : "ES"}
         </button>
         <button
           className="header-icon"
@@ -97,8 +109,8 @@ export default function HeaderMenu() {
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="menu-index">{item.index}</span>
-                  <a 
-                    className="menu-link" 
+                  <a
+                    className="menu-link"
                     href={item.href}
                     onClick={() => setOpen(false)}
                   >

@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLanguage } from "./LanguageController";
+import { t } from "../i18n/translations";
 
 const skills = [
   { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"] },
@@ -11,6 +13,8 @@ const skills = [
 
 export default function KnowledgeSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { lang } = useLanguage();
+  const tr = t(lang);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -28,7 +32,7 @@ export default function KnowledgeSection() {
           transition={{ duration: 0.8 }}
           className="text-6xl md:text-8xl font-bold font-oswald tracking-widest text-center mb-24 uppercase"
         >
-          CONOCIMIENTOS
+          {tr.knowledge.title}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

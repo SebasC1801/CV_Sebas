@@ -1,14 +1,20 @@
 "use client";
 
+import { useLanguage } from "./LanguageController";
+import { t } from "../i18n/translations";
+
 export default function GlowingCard() {
+  const { lang } = useLanguage();
+  const tr = t(lang);
+
   return (
     <div className="glowing-card-wrapper">
       <div className="flip-card">
         <img src="/FotoMia.png" alt="Sebastian Ceballos" className="flip-card__image" />
         <div className="flip-card__content">
-          <p className="flip-card__title">Mis intereses</p>
+          <p className="flip-card__title">{tr.glowingCard.title}</p>
           <p className="flip-card__description">
-            Cuando no estoy frente al PC programando, me encontrarás disfrutando de las cosas que más me apasionan. Los videojuegos son parte esencial de mi vida, me gustan por la creatividad, los retos y las historias que cuentan. El fútbol es otro de mis grandes amores, un deporte que me llena de energía y emoción en cada partido. La música siempre está presente en mi día a día, acompañándome en cada momento. Y por supuesto, soy un gran fan del universo Marvel, esas películas siempre logran sorprenderme y emocionarme.
+            {tr.glowingCard.description}
           </p>
         </div>
       </div>

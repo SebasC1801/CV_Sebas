@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080e0a;
-  --foreground: #ffffff;
-  --surface: #0a0a0a;
-  --muted: #b3b3b3;
-  --accent: #ffffff;
-  --glass: rgba(0, 0, 0, 0.6);
-  --border: rgba(255, 255, 255, 0.08);
+  --background: #080c18;
+  --foreground: #eef2ff;
+  --surface: #0e1428;
+  --muted: #8b9ec7;
+  --accent: #00e5ff;
+  --glass: rgba(8, 12, 24, 0.6);
+  --border: rgba(255, 255, 255, 0.07);
   --shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
-  --overlay-glow: rgba(255, 255, 255, 0.08);
+  --overlay-glow: rgba(167, 139, 250, 0.05);
   --radius: 26px;
   --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
@@ -90,10 +90,10 @@ body.tubes-paused .tubes-layer {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(240, 246, 255, 0.7);
   pointer-events: auto;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(8, 12, 24, 0.45);
+  border: 1px solid rgba(0, 229, 255, 0.15);
   padding: 8px 10px;
   border-radius: 999px;
   backdrop-filter: blur(10px);
@@ -113,12 +113,12 @@ body.tubes-paused .tubes-layer {
   height: 32px;
   border-radius: 50%;
   overflow: hidden;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 1.5px solid rgba(0, 229, 255, 0.3);
   transition: all 0.2s ease;
 }
 
 .header-avatar:hover {
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 229, 255, 0.6);
   transform: scale(1.05);
 }
 
@@ -143,18 +143,18 @@ html[data-theme="light"] .header-avatar:hover {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 229, 255, 0.08);
+  color: rgba(238, 242, 255, 0.9);
   cursor: pointer;
   transition: border-color 0.25s ease, color 0.25s ease,
     background 0.25s ease, transform 0.2s ease;
 }
 
 .header-icon:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  color: rgba(255, 255, 255, 1);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: rgba(238, 242, 255, 1);
+  background: rgba(0, 229, 255, 0.15);
   transform: scale(1.05);
 }
 
@@ -204,7 +204,7 @@ html[data-theme="light"] .header-icon:hover {
 }
 
 html[data-theme="dark"] .menu-floating {
-  background: rgba(17, 17, 17, 0.25);
+  background: rgba(14, 20, 40, 0.3);
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
 }
 
@@ -233,15 +233,15 @@ html[data-theme="dark"] .menu-floating {
 }
 
 html[data-theme="dark"] .menu-close-btn {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: rgba(0, 229, 255, 0.05);
+  color: rgba(238, 242, 255, 0.8);
 }
 
 html[data-theme="dark"] .menu-close-btn:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.1);
+  color: rgba(238, 242, 255, 1);
 }
 
 .menu-list {
@@ -269,7 +269,7 @@ html[data-theme="dark"] .menu-close-btn:hover {
 }
 
 html[data-theme="dark"] .menu-index {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(238, 242, 255, 0.45);
 }
 
 .menu-link {
@@ -278,7 +278,7 @@ html[data-theme="dark"] .menu-index {
   letter-spacing: 0.06em;
   font-size: 1.8rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(238, 242, 255, 0.85);
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
@@ -308,7 +308,7 @@ html[data-theme="light"] .menu-link:hover {
 }
 
 html[data-theme="dark"] .menu-link:hover {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(238, 242, 255, 1);
 }
 
 .intro-overlay {
@@ -1463,7 +1463,7 @@ html[data-theme="light"] .pj-cards-btn {
   user-select: none;
   width: 260px !important;
   height: 370px !important;
-  background: #1a1a1a;
+  background: #141c35;
 }
 
 .pj-cards-slide img {

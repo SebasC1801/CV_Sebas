@@ -33,7 +33,7 @@ export default function GlowingCard() {
           justify-content: center;
           overflow: hidden;
           perspective: 1000px;
-          box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 0 5px rgba(0, 229, 255, 0.3);
           transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 

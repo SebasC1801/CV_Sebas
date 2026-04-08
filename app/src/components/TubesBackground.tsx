@@ -30,9 +30,9 @@ function TubesCanvas({
   className,
   canvasClassName,
   disableClick = false,
-  colors = ["#3b82f6", "#6366f1", "#8b5cf6"],
-  lightsColors = ["#1d4ed8", "#4f46e5", "#7c3aed", "#2563eb"],
-  intensity = 200,
+  colors = ["#a78bfa", "#8b5cf6", "#6366f1"],
+  lightsColors = ["#7c3aed", "#6d28d9", "#4f46e5", "#4338ca"],
+  intensity = 120,
 }: TubesBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const appRef = useRef<any>(null);

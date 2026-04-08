@@ -1585,3 +1585,21 @@ html[data-theme="light"] .pj-cards-btn {
 .sr-reveal.testimonials-reveal {
   overflow: visible;
 }
+
+/* Mobile: stronger content text for readability over trail effect */
+@media screen and (max-width: 767px) {
+  .news__txt,
+  .news-date,
+  .news__title,
+  .card-content p,
+  .pj-cards-description,
+  .pj-cards-tag {
+    opacity: 1 !important;
+    font-weight: 500;
+  }
+
+  p.opacity-85,
+  .opacity-85 {
+    opacity: 1 !important;
+  }
+}

@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.1}>
+      <ScrollReveal delay={0.1} className="testimonials-reveal">
         <div className="testimonials-container">
         {testimonials.map((testimonial, index) => (
           <div

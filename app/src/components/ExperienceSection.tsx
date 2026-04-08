@@ -177,8 +177,8 @@ export default function ExperienceSection() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.1}>
-        <div className="news-wrapper">
+      <ScrollReveal delay={0.1} className="experience-reveal">
+        <div className="news-wrapper" style={{ maxWidth: "100%", overflow: "hidden" }}>
         <div ref={itemBgRef} className="item-bg"></div>
         
         <Swiper
@@ -189,6 +189,7 @@ export default function ExperienceSection() {
           loop={false}
           speed={300}
           initialSlide={0}
+          watchOverflow={true}
           navigation={{
             nextEl: ".news-slider-next",
             prevEl: ".news-slider-prev",
@@ -200,18 +201,21 @@ export default function ExperienceSection() {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 0,
-              centeredSlides: true,
+              spaceBetween: 16,
+              centeredSlides: false,
+              slidesPerGroup: 1,
             },
             900: {
               slidesPerView: 2,
               spaceBetween: 15,
               centeredSlides: false,
+              slidesPerGroup: 2,
             },
             1100: {
               slidesPerView: 3,
               spaceBetween: 20,
               centeredSlides: false,
+              slidesPerGroup: 3,
             },
           }}
           modules={[Navigation, Pagination]}

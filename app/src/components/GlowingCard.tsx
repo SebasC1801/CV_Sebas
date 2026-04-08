@@ -1,15 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "./LanguageController";
 import { t } from "../i18n/translations";
 
 export default function GlowingCard() {
   const { lang } = useLanguage();
   const tr = t(lang);
+  const [flipped, setFlipped] = useState(false);
 
   return (
     <div className="glowing-card-wrapper">
-      <div className="flip-card">
+      <div
+        className={`flip-card ${flipped ? "flip-card--flipped" : ""}`}
+        onClick={() => setFlipped((prev) => !prev)}
+      >
         <img src="/FotoMia.png" alt="Sebastian Ceballos" className="flip-card__image" />
         <div className="flip-card__content">
           <p className="flip-card__title">{tr.glowingCard.title}</p>
@@ -81,8 +86,27 @@ export default function GlowingCard() {
           cursor: pointer;
         }
 
-        .flip-card:hover .flip-card__content {
+        @media (hover: hover) {
+          .flip-card:hover .flip-card__content {
+            transform: rotateX(0deg);
+          }
+
+          .flip-card:hover .flip-card__image {
+            scale: 0;
+          }
+        }
+
+        .flip-card--flipped .flip-card__content {
           transform: rotateX(0deg);
+        }
+
+        .flip-card--flipped .flip-card__image {
+          scale: 0;
+        }
+
+        .flip-card--flipped {
+          transform: scale(1.05);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .flip-card__content:hover {
@@ -95,10 +119,6 @@ export default function GlowingCard() {
           color: var(--foreground);
           font-weight: 700;
           font-family: var(--font-oswald), "Oswald", sans-serif;
-        }
-
-        .flip-card:hover .flip-card__image {
-          scale: 0;
         }
 
         .flip-card__description {

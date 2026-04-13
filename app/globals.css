@@ -54,7 +54,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 0;
-  transition: opacity 0.7s ease, filter 0.7s ease, transform 1.2s ease;
+  transition: opacity 0.7s ease, filter 0.7s ease;
   background: var(--background);
   pointer-events: none;
 }
@@ -74,7 +74,6 @@ html[data-theme="light"] .tubes-canvas {
 body.tubes-paused .tubes-layer {
   opacity: 0.7;
   filter: blur(10px) saturate(0.85);
-  transform: scale(0.98);
 }
 
 .hero-wrap {
@@ -1575,6 +1574,7 @@ html[data-theme="light"] .pj-cards-btn {
   opacity: 0 !important;
   transform: scale(0.97) !important;
   transition: opacity 0.7s ease, transform 0.7s ease !important;
+  max-width: 100%;
 }
 
 .sr-reveal.sr-visible {

@@ -33,9 +33,9 @@ export default function ContactSection() {
               className="flex items-center gap-2 text-base md:text-xl opacity-70 hover:opacity-100 transition-opacity">
               <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-5 h-5" /> LinkedIn
             </a>
-            <a href="https://www.instagram.com/sxbv.ly?igsh=ZzhibmYzaWdodXp4" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/qr/B2WGIMIDLJQ3J1" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 text-base md:text-xl opacity-70 hover:opacity-100 transition-opacity">
-              <img src="/icons/instagram.svg" alt="Instagram" className="w-5 h-5" /> Instagram
+              <img src="/icons/Whatsapp.svg" alt="WhatsApp" className="w-5 h-5" /> WhatsApp
             </a>
             <a href="https://github.com/SebasC1801" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 text-base md:text-xl opacity-70 hover:opacity-100 transition-opacity">

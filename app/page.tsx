@@ -10,7 +10,7 @@ import TestimonialsSection from "./src/components/TestimonialsSection";
 import ContactSection from "./src/components/ContactSection";
 import Footer from "./src/components/Footer";
 import HeroSection from "./src/components/HeroSection";
-import WhatsAppButton from "./src/components/WhatsAppButton";
+
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -66,7 +66,6 @@ export default function Home() {
           <ContactSection />
         </div>
         <Footer />
-        <WhatsAppButton />
       </div>
     </>
   );

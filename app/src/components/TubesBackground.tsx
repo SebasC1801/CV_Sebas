@@ -36,8 +36,26 @@ function TubesCanvas({
 }: TubesBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const appRef = useRef<any>(null);
+  const [tooWide, setTooWide] = useState(false);
+  const baseWidth = useRef(0);
+
+  // Detect zoom out by comparing current viewport to initial size
+  useEffect(() => {
+    baseWidth.current = window.innerWidth;
+
+    const checkZoom = () => {
+      // If viewport grew more than 40% from initial load, user zoomed out
+      setTooWide(window.innerWidth > baseWidth.current * 1.4 || window.innerWidth > 2200);
+    };
+
+    window.addEventListener('resize', checkZoom);
+    return () => window.removeEventListener('resize', checkZoom);
+  }, []);
 
   useEffect(() => {
+    // Don't init tubes if viewport is too wide
+    if (tooWide) return;
+
     let mounted = true;
     let retryTimeout: ReturnType<typeof setTimeout>;
 
@@ -63,27 +81,22 @@ function TubesCanvas({
           
           appRef.current = app;
 
-          // Multiple resize dispatches to catch the moment the container becomes visible
-          const delays = [200, 600, 1200, 2000];
-          delays.forEach((delay) => {
-            setTimeout(() => {
-              if (mounted) window.dispatchEvent(new Event('resize'));
-            }, delay);
-          });
+          setTimeout(() => {
+            if (mounted) window.dispatchEvent(new Event('resize'));
+          }, 500);
         })
         .catch((err) => {
           console.error("Failed to load tubes script:", err);
         });
     };
 
-    // Delay init to give the page time to become visible (opacity transition)
     retryTimeout = setTimeout(initTubes, 800);
 
     return () => {
       mounted = false;
       clearTimeout(retryTimeout);
     };
-  }, [colors, lightsColors, intensity]);
+  }, [colors, lightsColors, intensity, tooWide]);
 
   // Click handler for random colors
   useEffect(() => {
@@ -106,10 +119,12 @@ function TubesCanvas({
 
   return (
     <div className={`tubes-layer ${className || ""}`}>
-      <canvas
-        ref={canvasRef}
-        className={`tubes-canvas ${canvasClassName || ""}`}
-      />
+      {!tooWide && (
+        <canvas
+          ref={canvasRef}
+          className={`tubes-canvas ${canvasClassName || ""}`}
+        />
+      )}
     </div>
   );
 }

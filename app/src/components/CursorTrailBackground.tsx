@@ -145,10 +145,7 @@ export default function CursorTrailBackground({
         left: 0,
         width: "100%",
         height: "100%",
-        pointerEvents: "none", // Let clicks pass through to content? 
-        // The original code tracks clicks but doesn't block them. 
-        // But if it's a background, it should probably be pointer-events: none so buttons work.
-        // However, the original code attaches listeners to window, so pointer-events: none on canvas is fine.
+        pointerEvents: "none",
         zIndex: 0,
         ...style,
       }}

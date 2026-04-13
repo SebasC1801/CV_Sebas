@@ -36,26 +36,8 @@ function TubesCanvas({
 }: TubesBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const appRef = useRef<any>(null);
-  const [tooWide, setTooWide] = useState(false);
-  const baseWidth = useRef(0);
-
-  // Detect zoom out by comparing current viewport to initial size
-  useEffect(() => {
-    baseWidth.current = window.innerWidth;
-
-    const checkZoom = () => {
-      // If viewport grew more than 40% from initial load, user zoomed out
-      setTooWide(window.innerWidth > baseWidth.current * 1.4 || window.innerWidth > 2200);
-    };
-
-    window.addEventListener('resize', checkZoom);
-    return () => window.removeEventListener('resize', checkZoom);
-  }, []);
 
   useEffect(() => {
-    // Don't init tubes if viewport is too wide
-    if (tooWide) return;
-
     let mounted = true;
     let retryTimeout: ReturnType<typeof setTimeout>;
 
@@ -96,7 +78,7 @@ function TubesCanvas({
       mounted = false;
       clearTimeout(retryTimeout);
     };
-  }, [colors, lightsColors, intensity, tooWide]);
+  }, [colors, lightsColors, intensity]);
 
   // Click handler for random colors
   useEffect(() => {
@@ -119,12 +101,10 @@ function TubesCanvas({
 
   return (
     <div className={`tubes-layer ${className || ""}`}>
-      {!tooWide && (
-        <canvas
-          ref={canvasRef}
-          className={`tubes-canvas ${canvasClassName || ""}`}
-        />
-      )}
+      <canvas
+        ref={canvasRef}
+        className={`tubes-canvas ${canvasClassName || ""}`}
+      />
     </div>
   );
 }
@@ -132,18 +112,40 @@ function TubesCanvas({
 export default function TubesBackground(props: TubesBackgroundProps) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [tooWide, setTooWide] = useState(false);
+  const [remountKey, setRemountKey] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Global zoom detection — uses screen.width as stable reference
+  useEffect(() => {
+    const checkZoom = () => {
+      const isZoomedOut = window.innerWidth > screen.width * 2.5;
+      setTooWide(prev => {
+        if (prev && !isZoomedOut) {
+          // Coming back from zoom out, force remount
+          setRemountKey(k => k + 1);
+        }
+        return isZoomedOut;
+      });
+    };
+
+    window.addEventListener('resize', checkZoom);
+    checkZoom();
+    return () => window.removeEventListener('resize', checkZoom);
+  }, []);
+
   if (!mounted) return null;
 
   if (theme === "light") {
-    // Use the new cursor trail animation in light mode
     return <CursorTrailBackground className={props.className} />;
   }
 
-  // Use the original tubes animation in dark mode
-  return <TubesCanvas {...props} />;
+  if (tooWide) {
+    return <div className="tubes-layer" />;
+  }
+
+  return <TubesCanvas key={remountKey} {...props} />;
 }

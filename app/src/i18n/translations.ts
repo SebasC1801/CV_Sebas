@@ -17,6 +17,7 @@ const translations = {
       callMe: "PERO PUEDES LLAMARME",
       nickname: "SEBAS",
       viewCv: "ver cv",
+      downloadCv: "descargar cv",
       viewProjects: "ver proyectos",
     },
     // About
@@ -139,6 +140,7 @@ const translations = {
       callMe: "BUT YOU CAN CALL ME",
       nickname: "SEBAS",
       viewCv: "view cv",
+      downloadCv: "download cv",
       viewProjects: "view projects",
     },
     about: {

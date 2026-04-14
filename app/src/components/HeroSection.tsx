@@ -47,8 +47,11 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a className="hero-button hero-button-primary" href="/cv.pdf">
+            <a className="hero-button hero-button-primary" href="/Hoja de vida Sebas.pdf" target="_blank" rel="noopener noreferrer">
               {tr.hero.viewCv}
+            </a>
+            <a className="hero-button hero-button-ghost" href="/Hoja de vida Sebas.pdf" download="CV_Sebastian_Ceballos.pdf">
+              {tr.hero.downloadCv}
             </a>
             <a className="hero-button hero-button-ghost" href="#projects">
               {tr.hero.viewProjects}

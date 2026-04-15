@@ -511,21 +511,43 @@ body.intro-done .intro-main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
-  padding: 50px 0;
+  min-height: 350px;
+  padding: 30px 0;
+  overflow: hidden;
 }
 
 .skills-carrousel {
   perspective: 400px;
-  width: 450px;
-  height: 300px;
+  width: 280px;
+  height: 250px;
   position: relative;
   margin: 0 auto;
 }
 
+@media screen and (min-width: 480px) {
+  .skills-carrousel {
+    width: 350px;
+    height: 280px;
+  }
+  .skills-carrousel-container {
+    min-height: 380px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .skills-carrousel {
+    width: 450px;
+    height: 300px;
+  }
+  .skills-carrousel-container {
+    min-height: 400px;
+    padding: 50px 0;
+  }
+}
+
 @keyframes skillsCarrousel {
   0% {
-    transform: rotateY(360deg) translateZ(150px) rotateY(-360deg);
+    transform: rotateY(360deg) translateZ(100px) rotateY(-360deg);
     z-index: 10;
     opacity: 0.9;
   }
@@ -534,29 +556,65 @@ body.intro-done .intro-main {
     opacity: 0.5;
   }
   100% {
-    transform: rotateY(0deg) translateZ(150px) rotateY(0deg);
+    transform: rotateY(0deg) translateZ(100px) rotateY(0deg);
     z-index: 10;
     opacity: 0.9;
   }
 }
 
+@media screen and (min-width: 768px) {
+  @keyframes skillsCarrousel {
+    0% {
+      transform: rotateY(360deg) translateZ(150px) rotateY(-360deg);
+      z-index: 10;
+      opacity: 0.9;
+    }
+    50% {
+      z-index: -10;
+      opacity: 0.5;
+    }
+    100% {
+      transform: rotateY(0deg) translateZ(150px) rotateY(0deg);
+      z-index: 10;
+      opacity: 0.9;
+    }
+  }
+}
+
 .skills-card {
-  width: 120px;
-  height: 180px;
+  width: 90px;
+  height: 135px;
   background-color: var(--surface);
   opacity: 0;
   position: absolute;
-  top: 60px;
-  left: 165px;
+  top: 55px;
+  left: calc(50% - 45px);
   border: solid 2px var(--border);
   border-radius: 12px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 15px;
   animation: skillsCarrousel 12s linear infinite;
   transform-style: preserve-3d;
+}
+
+@media screen and (min-width: 480px) {
+  .skills-card {
+    width: 105px;
+    height: 155px;
+    left: calc(50% - 52px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .skills-card {
+    width: 120px;
+    height: 180px;
+    left: calc(50% - 60px);
+    padding: 20px;
+  }
 }
 
 .skills-card:hover {

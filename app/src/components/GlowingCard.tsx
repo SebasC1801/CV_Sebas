@@ -14,6 +14,10 @@ export default function GlowingCard() {
       <div
         className={`flip-card ${flipped ? "flip-card--flipped" : ""}`}
         onClick={() => setFlipped((prev) => !prev)}
+        onTouchEnd={(e) => {
+          e.preventDefault();
+          setFlipped((prev) => !prev);
+        }}
       >
         <img src="/FotoMia.png" alt="Sebastian Ceballos" className="flip-card__image" />
         <div className="flip-card__content">
@@ -46,6 +50,10 @@ export default function GlowingCard() {
           perspective: 1000px;
           box-shadow: 0 0 0 5px rgba(0, 229, 255, 0.3);
           transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+          user-select: none;
         }
 
         @media screen and (min-width: 768px) {
@@ -83,7 +91,7 @@ export default function GlowingCard() {
           transform: rotateX(-90deg);
           transform-origin: bottom;
           transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          cursor: pointer;
+          pointer-events: none;
         }
 
         @media (hover: hover) {
@@ -107,10 +115,6 @@ export default function GlowingCard() {
         .flip-card--flipped {
           transform: scale(1.05);
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .flip-card__content:hover {
-          background-color: var(--background);
         }
 
         .flip-card__title {

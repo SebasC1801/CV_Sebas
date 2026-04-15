@@ -1554,6 +1554,7 @@ html[data-theme="light"] .pj-cards-btn {
   width: 300px;
   flex-shrink: 0;
   padding: 22px;
+  margin: 0 auto;
 }
 
 .pj-cards-swiper {
@@ -1612,6 +1613,7 @@ html[data-theme="light"] .pj-cards-btn {
   
   .pj-cards-swiper-wrap {
     width: 220px;
+    margin: 0 auto;
   }
   
   .pj-cards-swiper {
@@ -1622,6 +1624,11 @@ html[data-theme="light"] .pj-cards-btn {
   .pj-cards-slide {
     width: 220px !important;
     height: 300px !important;
+  }
+
+  .pj-cards-wrapper {
+    padding: 1.5rem 1rem;
+    overflow: hidden;
   }
 }
 

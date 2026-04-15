@@ -16,7 +16,7 @@ export default function ScrollStory() {
 
       {/* About */}
       <div className="w-full flex flex-col items-center justify-center py-10 lg:py-16 px-4 md:px-8 overflow-hidden">
-        <ScrollReveal>
+        <ScrollReveal className="w-full flex justify-center">
           <div style={{ maxWidth: "800px", width: "100%", textAlign: "center", marginBottom: "2rem" }}>
             <h2 style={{
               fontFamily: 'var(--font-oswald), Oswald, sans-serif',
@@ -51,8 +51,8 @@ export default function ScrollStory() {
             </p>
           </div>
         </ScrollReveal>
-        <ScrollReveal delay={0.15}>
-          <div className="flex justify-center px-4">
+        <ScrollReveal delay={0.15} className="w-full flex justify-center">
+          <div className="w-full flex justify-center px-4">
             <div className="max-w-[300px] md:max-w-[350px]">
               <GlowingCard />
             </div>

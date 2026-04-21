@@ -118,10 +118,6 @@ const translations = {
       subtitle: "¿TIENES UN PROYECTO EN MENTE?",
       title: "HABLEMOS",
     },
-    // Knowledge
-    knowledge: {
-      title: "CONOCIMIENTOS",
-    },
   },
 
   en: {
@@ -233,9 +229,6 @@ const translations = {
     contact: {
       subtitle: "HAVE A PROJECT IN MIND?",
       title: "LET'S TALK",
-    },
-    knowledge: {
-      title: "KNOWLEDGE",
     },
   },
 } as const;

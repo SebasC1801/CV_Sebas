@@ -15,7 +15,7 @@ const skillIcons = [
 
 export default function SkillsCarousel() {
   const [mounted, setMounted] = useState(false);
-  const totalDuration = 12; // duración total de la animación en segundos
+  const totalDuration = 12; // Total animation duration in seconds
   const delayPerCard = totalDuration / skillIcons.length;
 
   useEffect(() => {

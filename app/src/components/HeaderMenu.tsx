@@ -1,15 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Grip, Moon, Sun, X, Globe } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Grip, Moon, Sun, X } from "lucide-react";
+import { useState } from "react";
 import { useTheme } from "./ThemeController";
 import { useLanguage } from "./LanguageController";
 import { t } from "../i18n/translations";
 
 export default function HeaderMenu() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { lang, toggleLang } = useLanguage();
   const tr = t(lang);
@@ -23,10 +22,6 @@ export default function HeaderMenu() {
     { index: "06", label: tr.menu.testimonials, href: "#testimonials" },
     { index: "07", label: tr.menu.contact, href: "#contact" },
   ];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <>

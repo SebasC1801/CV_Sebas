@@ -1,12 +1,10 @@
 "use client";
 
-import { useTheme } from "./ThemeController";
 import { useLanguage } from "./LanguageController";
 import { t } from "../i18n/translations";
 import ScrollReveal from "./ScrollReveal";
 
 export default function ContactSection() {
-  const { theme } = useTheme();
   const { lang } = useLanguage();
   const tr = t(lang);
   

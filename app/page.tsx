@@ -11,22 +11,21 @@ import ContactSection from "./src/components/ContactSection";
 import Footer from "./src/components/Footer";
 import HeroSection from "./src/components/HeroSection";
 
-
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Desactivar restauración automática del scroll
+    // Disable automatic scroll restoration
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
     
-    // Forzar scroll al inicio inmediatamente
+    // Force scroll to top immediately
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     
-    // Esperar a que la página esté completamente cargada
+    // Wait for page to be fully loaded
     const handleLoad = () => {
       setTimeout(() => {
         setIsLoaded(true);

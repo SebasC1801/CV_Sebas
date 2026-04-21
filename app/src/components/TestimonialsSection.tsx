@@ -21,21 +21,25 @@ export default function TestimonialsSection() {
   const tr = t(lang);
 
   const nextCard = () => {
-    if (currentStep < testimonialsMeta.length - 1) setCurrentStep(currentStep + 1);
+    setCurrentStep((prev) => (prev + 1) % testimonialsMeta.length);
   };
   const previousCard = () => {
-    if (currentStep > 0) setCurrentStep(currentStep - 1);
+    setCurrentStep((prev) => (prev - 1 + testimonialsMeta.length) % testimonialsMeta.length);
   };
   const onTouchStart = (event: React.TouchEvent) => {
     setTouchStartX(event.changedTouches[0].clientX);
   };
   const onTouchEnd = (event: React.TouchEvent) => {
     const deltaX = touchStartX - event.changedTouches[0].clientX;
-    if (deltaX > 50 && currentStep < testimonialsMeta.length - 1) nextCard();
-    else if (deltaX < -50 && currentStep > 0) previousCard();
+    if (deltaX > 50) nextCard();
+    else if (deltaX < -50) previousCard();
   };
   const getCardClass = (index: number) => {
-    const diff = index - currentStep;
+    const total = testimonialsMeta.length;
+    let diff = index - currentStep;
+    // Normalize for circular navigation
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
     if (diff === 0) return "principal";
     if (diff === 1) return "siguiente";
     if (diff === 2) return "siguiente2";
@@ -103,23 +107,15 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
                 <div className="buttons">
-                  {currentStep > 0 && (
                     <button onClick={previousCard} className="previous-button" aria-label="Previous testimonial">&#8592;</button>
-                  )}
-                  {currentStep < testimonialsMeta.length - 1 && (
                     <button onClick={nextCard} className="next-button" aria-label="Next testimonial">&#8594;</button>
-                  )}
                 </div>
               </div>
             </div>
           </div>
         ))}
-        {currentStep > 0 && (
-          <div className="div-transparent-previous" onClick={previousCard}></div>
-        )}
-        {currentStep < testimonialsMeta.length - 1 && (
-          <div className="div-transparent-next" onClick={nextCard}></div>
-        )}
+        <div className="div-transparent-previous" onClick={previousCard}></div>
+        <div className="div-transparent-next" onClick={nextCard}></div>
       </div>
       </ScrollReveal>
     </section>

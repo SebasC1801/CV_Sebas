@@ -161,6 +161,7 @@ export default function ExperienceSection() {
           slidesPerView={3}
           spaceBetween={20}
           loop={false}
+          rewind={true}
           speed={300}
           initialSlide={0}
           watchOverflow={true}

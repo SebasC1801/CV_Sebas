@@ -112,12 +112,13 @@ body.tubes-paused .tubes-layer {
   height: 32px;
   border-radius: 50%;
   overflow: hidden;
-  border: 1.5px solid rgba(0, 229, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .header-avatar:hover {
-  border-color: rgba(0, 229, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.7);
   transform: scale(1.05);
 }
 

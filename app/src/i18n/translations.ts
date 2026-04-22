@@ -12,7 +12,7 @@ const translations = {
     },
     // Hero
     hero: {
-      greeting: "HOLA, SOY",
+      greeting: "BIENVENIDO/A A MI CV, SOY",
       name: "SEBASTIAN CEBALLOS",
       callMe: "PERO PUEDES LLAMARME",
       nickname: "SEBAS",
@@ -131,7 +131,7 @@ const translations = {
       contact: "Contact",
     },
     hero: {
-      greeting: "HI, I'M",
+      greeting: "WELCOME TO MY CV, I'M",
       name: "SEBASTIAN CEBALLOS",
       callMe: "BUT YOU CAN CALL ME",
       nickname: "SEBAS",

@@ -49,7 +49,11 @@ export function ThemeController({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
+    document.documentElement.classList.add("theme-transition");
     setTheme((current) => (current === "dark" ? "light" : "dark"));
+    setTimeout(() => {
+      document.documentElement.classList.remove("theme-transition");
+    }, 600);
   };
 
   const value = useMemo(

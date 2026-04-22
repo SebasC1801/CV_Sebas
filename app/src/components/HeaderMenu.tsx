@@ -9,8 +9,9 @@ import { t } from "../i18n/translations";
 
 export default function HeaderMenu() {
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { lang, toggleLang } = useLanguage();
+  const { lang, setLang } = useLanguage();
   const tr = t(lang);
 
   const menuItems = [
@@ -49,16 +50,40 @@ export default function HeaderMenu() {
             </motion.span>
           </AnimatePresence>
         </button>
-        <button
-          className="header-icon"
-          type="button"
-          aria-label={lang === "es" ? "Switch to English" : "Cambiar a Español"}
-          onClick={toggleLang}
-          title={lang === "es" ? "EN" : "ES"}
-          style={{ fontSize: "13px", fontWeight: 600, fontFamily: "var(--font-oswald)" }}
-        >
-          {lang === "es" ? "EN" : "ES"}
-        </button>
+        <div className="header-lang-wrapper">
+          <button
+            className="header-icon"
+            type="button"
+            aria-label="Change language"
+            onClick={() => setLangOpen((prev) => !prev)}
+          >
+            <img src="/icons/language.svg" alt="Language" className="header-lang-icon" width={18} height={18} />
+          </button>
+          <AnimatePresence>
+            {langOpen && (
+              <motion.div
+                className="header-lang-dropdown"
+                initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                <button
+                  className={`header-lang-option ${lang === "es" ? "active" : ""}`}
+                  onClick={() => { setLang("es"); setLangOpen(false); }}
+                >
+                  Español
+                </button>
+                <button
+                  className={`header-lang-option ${lang === "en" ? "active" : ""}`}
+                  onClick={() => { setLang("en"); setLangOpen(false); }}
+                >
+                  English
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <button
           className="header-icon"
           type="button"

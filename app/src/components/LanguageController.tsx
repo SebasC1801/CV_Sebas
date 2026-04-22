@@ -33,11 +33,24 @@ export function LanguageController({ children }: { children: React.ReactNode }) 
     window.localStorage.setItem("lang", lang);
   }, [lang, mounted]);
 
-  const toggleLang = () => {
-    setLang((current) => (current === "es" ? "en" : "es"));
+  const setLangWithTransition = (newLang: Language) => {
+    if (newLang === lang) return;
+    const html = document.documentElement;
+    html.classList.add("lang-transition", "lang-fade");
+    setTimeout(() => {
+      setLang(newLang);
+      html.classList.remove("lang-fade");
+      setTimeout(() => {
+        html.classList.remove("lang-transition");
+      }, 350);
+    }, 300);
   };
 
-  const value = useMemo(() => ({ lang, setLang, toggleLang }), [lang]);
+  const toggleLang = () => {
+    setLangWithTransition(lang === "es" ? "en" : "es");
+  };
+
+  const value = useMemo(() => ({ lang, setLang: setLangWithTransition, toggleLang }), [lang]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

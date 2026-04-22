@@ -14,11 +14,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const experiencesMeta = [
-  { id: 1, date: { day: "2024", month: "" }, image: "/cooperativa.jpg" },
-  { id: 2, date: { day: "2026", month: "" }, image: "/impulsa360.jpeg" },
-  { id: 3, date: { day: "2024", month: "" }, image: "/krolnails.jpg" },
+  { id: 1, date: { day: "2024", month: "" }, image: "/ingles.jpg" },
+  { id: 2, date: { day: "2024", month: "" }, image: "/krolnails.jpg" },
+  { id: 3, date: { day: "2024", month: "" }, image: "/cooperativa.jpg" },
   { id: 4, date: { day: "2025", month: "" }, image: "/ropatienda.jpg" },
-  { id: 5, date: { day: "2024", month: "" }, image: "/ingles.jpg" },
+  { id: 5, date: { day: "2026", month: "" }, image: "/impulsa360.jpeg" },
 ];
 
 export default function ExperienceSection() {

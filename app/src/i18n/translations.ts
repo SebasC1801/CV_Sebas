@@ -69,24 +69,24 @@ const translations = {
       description: "Mi trayectoria académica y profesional refleja mi compromiso con el aprendizaje continuo y el desarrollo de habilidades en programación y diseño web.",
       items: [
         {
-          title: "Ingeniería de Software",
-          description: "Universidad Cooperativa de Colombia, Campus Pasto. Quinto semestre. Formación en desarrollo de software con énfasis en programación, bases de datos, estructuras de datos y desarrollo web. Experiencia práctica a través de proyectos académicos.",
-        },
-        {
-          title: "Desarrollador Web Freelance",
-          description: "Impulsa 360. Desarrollo de la página web corporativa de la empresa, incluyendo diseño de interfaz y maquetación frontend.",
+          title: "Idiomas",
+          description: "Español — Nativo. Inglés — Básico-Intermedio (A2/B1). Capacidad de comunicación en ambos idiomas para entornos profesionales y académicos.",
         },
         {
           title: "Asistente de Inventario",
           description: "Krol Nails. Gestión y organización de inventario, atención al cliente y manejo de productos.",
         },
         {
+          title: "Ingeniería de Software",
+          description: "Universidad Cooperativa de Colombia, Campus Pasto. Quinto semestre. Formación en desarrollo de software con énfasis en programación, bases de datos, estructuras de datos y desarrollo web. Experiencia práctica a través de proyectos académicos.",
+        },
+        {
           title: "Asistente de Tienda",
           description: "Local de ropa. Control de stock, organización de productos y trabajo en equipo.",
         },
         {
-          title: "Idiomas",
-          description: "Español — Nativo. Inglés — Básico-Intermedio (A2/B1). Capacidad de comunicación en ambos idiomas para entornos profesionales y académicos.",
+          title: "Desarrollador Web Freelance",
+          description: "Impulsa 360. Desarrollo de la página web corporativa de la empresa, incluyendo diseño de interfaz y maquetación frontend.",
         },
       ],
     },
@@ -183,24 +183,24 @@ const translations = {
       description: "My academic and professional journey reflects my commitment to continuous learning and the development of skills in programming and web design.",
       items: [
         {
-          title: "Software Engineering",
-          description: "Universidad Cooperativa de Colombia, Pasto Campus. Fifth semester. Training in software development with emphasis on programming, databases, data structures, and web development. Hands-on experience through academic projects.",
-        },
-        {
-          title: "Freelance Web Developer",
-          description: "Impulsa 360. Development of the company's corporate website, including interface design and frontend layout.",
+          title: "Languages",
+          description: "Spanish — Native. English — Basic-Intermediate (A2/B1). Communication ability in both languages for professional and academic environments.",
         },
         {
           title: "Inventory Assistant",
           description: "Krol Nails. Inventory management and organization, customer service, and product handling.",
         },
         {
+          title: "Software Engineering",
+          description: "Universidad Cooperativa de Colombia, Pasto Campus. Fifth semester. Training in software development with emphasis on programming, databases, data structures, and web development. Hands-on experience through academic projects.",
+        },
+        {
           title: "Store Assistant",
           description: "Clothing store. Stock control, product organization, and teamwork.",
         },
         {
-          title: "Languages",
-          description: "Spanish — Native. English — Basic-Intermediate (A2/B1). Communication ability in both languages for professional and academic environments.",
+          title: "Freelance Web Developer",
+          description: "Impulsa 360. Development of the company's corporate website, including interface design and frontend layout.",
         },
       ],
     },

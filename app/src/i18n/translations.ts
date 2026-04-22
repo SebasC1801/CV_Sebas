@@ -12,12 +12,11 @@ const translations = {
     },
     // Hero
     hero: {
-      greeting: "BIENVENIDO/A A MI CV, SOY",
+      greeting: "BIENVENID@, SOY",
       name: "SEBASTIAN CEBALLOS",
       callMe: "PERO PUEDES LLAMARME",
       nickname: "SEBAS",
       viewCv: "ver cv",
-      downloadCv: "descargar cv",
       viewProjects: "ver proyectos",
     },
     // About
@@ -131,12 +130,11 @@ const translations = {
       contact: "Contact",
     },
     hero: {
-      greeting: "WELCOME TO MY CV, I'M",
+      greeting: "WELCOME, I'M",
       name: "SEBASTIAN CEBALLOS",
       callMe: "BUT YOU CAN CALL ME",
       nickname: "SEBAS",
       viewCv: "view cv",
-      downloadCv: "download cv",
       viewProjects: "view projects",
     },
     about: {

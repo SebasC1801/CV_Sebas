@@ -50,9 +50,6 @@ export default function HeroSection() {
             <a className="hero-button hero-button-primary" href="/Hoja de vida Sebas.pdf" target="_blank" rel="noopener noreferrer">
               {tr.hero.viewCv}
             </a>
-            <a className="hero-button hero-button-ghost" href="/Hoja de vida Sebas.pdf" download="CV_Sebastian_Ceballos.pdf">
-              {tr.hero.downloadCv}
-            </a>
             <a className="hero-button hero-button-ghost" href="#projects">
               {tr.hero.viewProjects}
             </a>

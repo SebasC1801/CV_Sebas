@@ -31,8 +31,8 @@ export default function Footer() {
         </div>
 
         {/* Derecha: Made with + iconos */}
-        <div className="flex items-center gap-3">
-          <span className="text-xs md:text-sm font-neuton text-[var(--foreground)] opacity-50 tracking-wider">
+        <div className="flex items-center gap-4 md:gap-6 md:mb-2">
+          <span className="text-xs md:text-lg lg:text-xl font-neuton text-[var(--foreground)] opacity-50 tracking-wider">
             {lang === "es" ? "Hecho con" : "Made with"}
           </span>
           {techIcons.map((icon) => (
@@ -42,11 +42,11 @@ export default function Footer() {
                 alt={icon.name}
                 width={28}
                 height={28}
-                className={`opacity-70 hover:opacity-100 transition-opacity ${
+                className={`md:w-12 md:h-12 opacity-70 hover:opacity-100 transition-opacity ${
                   icon.needsInvert && theme === "dark" ? "invert" : ""
                 }`}
               />
-              <span className="text-[10px] font-neuton text-[var(--foreground)] opacity-50">
+              <span className="text-[10px] md:text-sm font-neuton text-[var(--foreground)] opacity-50">
                 {icon.name}
               </span>
             </div>
